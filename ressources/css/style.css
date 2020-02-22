@@ -2,7 +2,6 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Montserrat' ;
 
 }
 body, html {
@@ -25,13 +24,12 @@ body, html {
 nav ul {
     list-style: none;
     margin: 0;
+    padding-left: 50px;
 
 }
 nav li {
     display: inline-block;
-    margin-left: 5px;
     height: 100%;
-    margin: 0px 10px;
     padding: 10px;
 }
 nav a {
@@ -60,4 +58,7 @@ footer {
 footer img {
     height: 50px;
     margin-left: auto;
+}
+main {
+    margin: 0px 50px;
 }
