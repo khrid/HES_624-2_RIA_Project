@@ -58,6 +58,7 @@ nav {
     background: #2f2f2f;
 }
 nav .active {
+
     background: white;
     
 }
@@ -76,6 +77,20 @@ footer img {
     height: 50px;
     margin-left: auto;
 }
-main {
+.main {
     margin: 0px 50px;
 }
+.mockup {
+    margin-bottom: 30px;
+}
+.mockup figure {
+    width: 45%;
+    margin: 2%;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 900px) {
+    .mockup figure {
+        width: 100%;
+    }
+  }
