@@ -59,7 +59,7 @@ nav {
 }
 nav .active {
     background: white;
-    
+
 }
 nav .active a {
     color: orange;
@@ -78,4 +78,26 @@ footer img {
 }
 main {
     margin: 0px 50px;
+}
+
+/* Pour le mobile */
+@media only screen and (max-width: 600px) {
+
+    .hamburger {
+        display: block;
+        text-align: center;
+        color:white;
+        filter: brightness(0) invert(1);
+    }
+
+    nav ul {
+        padding: 0px;
+        text-align: center;
+    }
+
+    nav li {
+        height: 100%;
+        padding: 10px;
+        display: block;
+    }
 }
