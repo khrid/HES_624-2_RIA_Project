@@ -49,6 +49,9 @@ nav li {
     height: 100%;
     padding: 10px;
 }
+nav a:hover {
+    color: orange;
+}
 nav a {
     text-decoration: none;
     color: white;
@@ -92,5 +95,9 @@ footer img {
 @media only screen and (max-width: 900px) {
     .mockup figure {
         width: 100%;
-    }
-  }
+    }   
+}
+
+#articles div p {
+    text-align: right;
+}
