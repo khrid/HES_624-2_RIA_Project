@@ -27,9 +27,6 @@ main {
     flex-grow: 1;
     display: flex;
 }
-.main  {
-    margin: 0px 20px;
-}
 
 /* Header */
 .header {
@@ -150,7 +147,7 @@ aside > div > ul {
 /* Pour le mobile */
 @media only screen and (max-width: 768px) {
 
-    .main {
+    main {
         display: block;
     }
 
@@ -171,6 +168,9 @@ aside > div > ul {
         padding: 10px;
         display: block;
     }
+    .mockup figure {
+        width: 100%;
+    }
 }
 
 .mockup {
@@ -180,12 +180,6 @@ aside > div > ul {
     width: 45%;
     margin: 2%;
     display: inline-block;
-}
-
-@media only screen and (max-width: 900px) {
-    .mockup figure {
-        width: 100%;
-    }   
 }
 
 #articles div p {
