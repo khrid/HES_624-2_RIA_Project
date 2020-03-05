@@ -101,3 +101,26 @@ footer img {
 #articles div p {
     text-align: right;
 }
+.sitemap li h4 {
+    margin:0
+}
+.sitemap ul li {
+    margin:5px;
+}
+.sitemap li {
+	list-style-type: none;
+	counter-increment: repas; /* on incrémente le compteur à chaque nouveau li */
+	margin-bottom: 10px;
+}
+.sitemap li:before {
+    content: ' - ';
+    padding: 0px 10px;
+    margin-right: 8px;
+    vertical-align: top;
+    background: #fa5630;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: white;	
+}
