@@ -216,6 +216,6 @@ aside > div > ul {
     font-size: 0.8em;
     color: white;	
 }
-#articles p {
+#articles .emphase {
     text-align: right;
 }
