@@ -144,7 +144,12 @@ aside > div > ul {
     padding: 0px 5px 5px 5px;
 }
 
+@media only screen and (min-width: 768px) {
+    nav li {
+        visibility: visible!important;
+    }
 
+}
 /* Pour le mobile */
 @media only screen and (max-width: 768px) {
 
@@ -174,7 +179,6 @@ aside > div > ul {
         width: 100%;
     }
 }
-
 .mockup {
     margin-bottom: 30px;
 }
