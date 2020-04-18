@@ -1,0 +1,67 @@
+html, body, .game_container {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.game_container {
+    /*overflow: hidden;*/
+}
+
+.play_zone {
+    width: 10000px;
+/*     left: -2000px;
+ */
+}
+
+.top_zone {
+    height: 70vh;
+    width: 100%;
+    background: #afafaf;
+    position: relative;
+}
+
+.bottom_zone {
+    height: 30vh;
+    width: 100%;
+    background: #e5d599;   
+}
+
+.personnage {
+    position: absolute;
+    bottom: 15vh;
+}
+
+.play_zone {
+    position: relative;
+}
+
+.all_doors {
+    position: absolute;
+    bottom: 0;
+    left: 500px;
+}
+
+.personnage {
+    height: 40vh;
+
+}
+
+.door {
+    position: relative;
+    height: 40vh;
+    width: 30vh;
+    margin-right: 1000px;
+    border: solid 5px #707070;
+    float: left;
+    background: #eee7c8;
+}
+
+.door span {
+    color: #707070;
+    font-weight: 900;
+    font-size: 22vh;
+    writing-mode: tb-rl;
+}
