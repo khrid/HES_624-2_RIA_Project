@@ -92,6 +92,50 @@ footer img {
     margin-left: auto;
 }
 
+/* Tableau du Halle of fame */
+#hof{
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+#hof th {
+    background-color: #2f2f2f;
+    color: white;
+    padding: 5px 0px 5px 0px;
+}
+
+#hof .hof-table-score {
+    width: 20%;
+}
+
+#hof .hof-table-player {
+    width: 30%;
+}
+
+#hof .hof-table-localisation {
+}
+
+#hof .hof-table-timestamp {
+    width: 20%;
+}
+
+#hof .hof-top-1 {
+    font-size: 28px;
+    font-weight: bolder;
+    background-color: #F09478;
+}
+#hof .hof-top-2 {
+    font-size: 24px;
+    font-weight: bolder;
+    background-color: rgba(240, 148, 120, 0.75);
+}
+#hof .hof-top-3 {
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: rgba(240, 148, 120, 0.25);
+}
+
 /* Eléments solo */
 a {
     color: #E26633;

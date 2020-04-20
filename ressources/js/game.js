@@ -3,9 +3,10 @@
 // Create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
+var div = document.getElementById("game");
 canvas.width = 512;
 canvas.height = 480;
-document.body.appendChild(canvas);
+div.appendChild(canvas)
 
 // Background image
 var bgReady = false;
@@ -106,7 +107,10 @@ var render = function () {
 	ctx.font = "24px Helvetica";
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
-	ctx.fillText("Goblins caught: " + monstersCaught, 32, 32);
+
+
+
+	ctx.fillText(getCookieValue("runhessorun-currentplayer") + " - Goblins caught: " + monstersCaught, 32, 32);
 };
 
 // The main game loop
@@ -132,3 +136,10 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 var then = Date.now();
 reset();
 main();
+
+
+
+function getCookieValue(a) {
+	var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+	return b ? b.pop() : '';
+}
