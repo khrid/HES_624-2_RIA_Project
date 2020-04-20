@@ -13,6 +13,7 @@ class Actions {
     moveLeft(){}
     jump(){}
     entrerClasse() {}
+
 }
 
 class Level {
@@ -31,7 +32,5 @@ class Obstacle {
 }
 
 class Classe {
-    constructor(num, win=0) {
-        this.n
-    }
+    constructor(num, win=0) {}
 }
