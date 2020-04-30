@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Journal de bord</title>
     <meta charset="utf-8">
@@ -10,7 +11,7 @@
 </head>
 <body>
 
-<section class="header">
+<header>
     <h1>HES-SO Vs - 624-2 - HTML/CSS/JavaScript</h1>
     <nav>
         <!-- Hamburger -->
@@ -21,10 +22,10 @@
             <li>
                 <a href="index.html">Description</a>
             </li>
-            <li >
+            <li>
                 <a href="maquettes.html">Maquettes</a>
             </li>
-            <li >
+            <li>
                 <a href="mockup.html">Mockup</a>
             </li>
             <li>
@@ -41,18 +42,17 @@
             </li>
         </ul>
     </nav>
-</section>
-
+</header>
 
 
 <main>
     <!-- Début zone pour votre contenu -->
-    <section id="articles">
-        <article>
-            <header>
-                <h2>Journal de bord</h2>
-                <p><i>Par Louise, Albain, David, le 26/02/2020 à 17:00</i></p>
-            </header>
+    <div id="articles">
+        <div>
+            <h2>Journal de bord</h2>
+            <p><i>Par Louise, Albain, David, le 26/02/2020 à 17:00</i></p>
+        </div>
+        <div>
             <table>
                 <tr>
                     <th>Date</th>
@@ -99,15 +99,34 @@
                     </td>
                     <td>David</td>
                 </tr>
+                <tr>
+                    <td>28.02.2020</td>
+                    <td>1h</td>
+                    <td>Mockup du jeu</td>
+                    <td>Louise</td>
+                </tr>
+                <tr>
+                    <td>04.03.2020</td>
+                    <td>1.5h</td>
+                    <td>Harmonier la structure html sur toutes les pages + Changement CSS + sitemap</td>
+                    <td>Albain</td>
+                </tr>
+                <tr>
+                    <td>05.03.2020</td>
+                    <td>1h</td>
+                    <td>Finir sitemap + merge sur dev</td>
+                    <td>Albain</td>
+                </tr>
             </table>
-        </article>
-    </section>
-    <!-- >Fin zone pour votre contenu -->
+        </div>
+    </div>
 </main>
-    
-    <footer>
-        <img id="logo" src="ressources/images/logo.png">
-    </footer>
+
+
+<footer>
+    <img id="logo" src="ressources/images/logo.png">
+</footer>
 
 </body>
+
 </html>

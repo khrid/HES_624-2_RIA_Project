@@ -1,0 +1,95 @@
+html, body, .game_container {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.game_container {
+    /*overflow: hidden;*/
+}
+
+.play_zone {
+    width: 10000px;
+/*     left: -2000px;
+ */
+}
+
+.top_zone {
+    height: 70vh;
+    width: 100%;
+    background: #afafaf;
+    position: relative;
+}
+
+.bottom_zone {
+    height: 30vh;
+    width: 100%;
+    background: #e5d599;   
+}
+
+.personnage {
+    height: 30vh;
+    position: absolute;
+    bottom: 20vh;
+}
+
+.play_zone {
+    position: relative;
+}
+
+.all_doors {
+    position: absolute;
+    bottom: 0;
+    left: 500px;
+}
+
+
+.door {
+    position: relative;
+    height: 40vh;
+    width: 30vh;
+    margin-right: 1000px;
+    border: solid 5px #707070;
+    float: left;
+    background: #eee7c8;
+}
+
+.door span {
+    color: #707070;
+    font-weight: 900;
+    font-size: 22vh;
+    writing-mode: tb-rl;
+}
+
+.buttons-actions {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.btn-action {
+    width: 50px;
+    height: 50px;
+    /* background: none;
+    border: none; */
+}
+.personnage {
+    align-self: flex-end;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    margin: 0 auto 0 auto;
+    transform-origin: bottom;
+    
+}
+
+.jump {
+    animation-name: bounce-2;
+    animation-timing-function: ease;
+}
+@keyframes bounce-2 {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-300px); }
+    100% { transform: translateY(0); }
+}

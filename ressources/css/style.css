@@ -29,12 +29,12 @@ main {
 }
 
 /* Header */
-.header {
+body > header {
     background-image: linear-gradient(#f6c2a8, #e26835);
     padding-top: 50px;
 }
 
-.header h1 {
+body > header h1 {
     margin: 40px;
     color: white;
     text-align: center;
@@ -48,7 +48,7 @@ main {
 nav ul {
     list-style: none;
     margin: 0;
-    padding-left: 50px;
+    padding-left: 25    px;
 
 }
 
@@ -56,6 +56,10 @@ nav li {
     display: inline-block;
     height: 100%;
     padding: 10px;
+}
+
+nav a:hover {
+    color: orange;
 }
 
 nav a {
@@ -69,6 +73,7 @@ nav {
 }
 
 nav .active {
+
     background: white;
 
 }
@@ -176,7 +181,6 @@ aside > div > h3 {
     background-color: #E26633;
     color: white;
     padding: 5px;
-    font-family: Arial;
 }
 
 aside > div > ul {
@@ -184,7 +188,12 @@ aside > div > ul {
     padding: 0px 5px 5px 5px;
 }
 
+@media only screen and (min-width: 768px) {
+    nav li {
+        visibility: visible!important;
+    }
 
+}
 /* Pour le mobile */
 @media only screen and (max-width: 768px) {
 
@@ -209,4 +218,52 @@ aside > div > ul {
         padding: 10px;
         display: block;
     }
+
+    .mockup figure {
+        width: 100%;
+    }
+}
+.mockup {
+    margin-bottom: 30px;
+}
+
+.mockup figure {
+    width: 45%;
+    margin: 2%;
+    display: inline-block;
+}
+
+#articles div p {
+    text-align: right;
+}
+
+.sitemap li h4 {
+    margin: 0
+}
+
+.sitemap ul li {
+    margin: 5px;
+}
+
+.sitemap li {
+    list-style-type: none;
+    counter-increment: repas; /* on incrémente le compteur à chaque nouveau li */
+    margin-bottom: 10px;
+}
+
+.sitemap li:before {
+    content: ' - ';
+    padding: 0px 10px;
+    margin-right: 8px;
+    vertical-align: top;
+    background: #fa5630;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: white;
+}
+
+#articles .emphase {
+    text-align: right;
 }
