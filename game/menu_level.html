@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+    <script src="js/menu_level.js"></script>
+
 </head>
 <body>
 <div class="game_container">
@@ -14,23 +16,31 @@
             <div class="big_title">Choix du niveau</div>
             
             <div class="all_level">
-                 <a href="menu_rules.html">
-                    <div class="level_box">1</div>
-                </a>
-                <a href="menu_rules.html">
-                    <div class="level_box">2</div>
-                </a>
-                 <a href="menu_rules.html">
-                    <div class="level_box">3</div>
-                </a>
-                <a href="menu_rules.html">
-                    <div class="level_box">4</div>
-                </a>
+                
+                    <div class="level_box" id="level1" draggable="true" ondragstart="drag(event)">1</div>
+        
+               
+                    <div class="level_box" id="level2" draggable="true" ondragstart="drag(event)">2</div>
+                
+           
+                    <div class="level_box" id="level3" draggable="true" ondragstart="drag(event)">3</div>
+                
+      
+                    <div class="level_box" id="level4" draggable="true" ondragstart="drag(event)">4</div>
+      
+                
             </div>
+            <div class="all_level">
+                <div class="dropzone" id="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <a href="index.html">
+                <div class="continue_btn" id="continue">Continue</div>
+            </a>
            
             <a href="menu_player.html">
                 <img src="images/back.png" class="back_btn" alt="" />
             </a>
+
         </div>          
 
     </div>

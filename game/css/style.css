@@ -6,12 +6,17 @@ html, body, .game_container, .welcome_zone, .menu_zone {
     font-family: 'BD Cartoon Shout';
     
 }
+@font-face {
+    font-family:"BD Cartoon Shout";
+    src: url("../../ressources/fonts/BD_Cartoon_Shout.ttf") format("truetype");
+  
+  }
+
+
 
 .game_container {
     /*overflow: hidden;*/
 }
-
-
 
 
 /*
@@ -151,9 +156,8 @@ PART 3 : LEVEL CHOICE
     height: 20vh;
     width: 20vh;   
     
-    margin-right:  30px;
-    margin-left: 30px;
-    margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;
     
     border: solid 5px #000000;
     border-radius: 30px;
@@ -178,6 +182,22 @@ PART 3 : LEVEL CHOICE
     
 }
 
+.dropzone{
+    position: relative;
+      
+    margin-top: 15px;
+    padding: 30px;
+    
+    border: solid 5px #000000;
+    border-radius: 30px;
+    height: 150px;
+    width: 150px;
+    color: #000000;
+    font-size: 7vh;
+    line-height: 21vh;
+    
+}
+
 .back_btn {
 
     position: absolute;
@@ -187,6 +207,25 @@ PART 3 : LEVEL CHOICE
     
 }
 
+
+.continue_btn {
+    display: none;
+    position: absolute;
+    height: 10vh;
+    width: 20vh;   
+
+    
+    border: solid 3px #000000;
+    border-radius: 30px;
+    background: #F09478;
+
+    bottom: 50px;
+    right: 50px;
+    
+    color: #000000;
+    font-size: 22px;
+    line-height: 11vh;
+}
 
 /*
 PART 4 : RULES
