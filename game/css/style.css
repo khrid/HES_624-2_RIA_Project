@@ -272,6 +272,7 @@ PART 5 : THE GAME
     position: absolute;
     bottom: 0;
     left: 500px;
+    display: flex;
 }
 
 
