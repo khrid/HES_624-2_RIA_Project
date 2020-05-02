@@ -1,5 +1,4 @@
 import DEPART_PLAYER from './constants.js'
-console.log(DEPART_PLAYER)
 
 var canvas = document.getElementById('canvas'),
     game_container = document.getElementById('game_container');
@@ -52,7 +51,6 @@ const player = {
         if (keyboard.right) { this.dx = this.moveSpeed }
 
         if (!(this.x <= DEPART_PLAYER)) {
-            console.log("this.x + this.size < 0", this.x)
             this.x += this.dx;
         } else {
             this.x = DEPART_PLAYER+1;
