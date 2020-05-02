@@ -1,16 +1,21 @@
 <!doctype html>
 <html>
+
 <head>
     <title>624-2 - HTML/CSS/JavaScript</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
-    <script src="js/index.js"></script>
+
 </head>
+
 <body>
-    <div class="game_container">
-        <div class="play_zone" id="playground">
+    <div class="game_container" id="game_container">
+        <canvas id='canvas'></canvas>
+
+
+        <!-- <div class="play_zone" id="playground">
             <div class="top_zone game_zone">
                 <div class="all_doors">
                     <div class="door">
@@ -35,18 +40,10 @@
                 <div class="all_obstacles"></div>
             </div>
             <div class="bottom_zone game_zone"></div>
-            <div class="perso_cont">
-
-                <img src="images/bitmoji/albain_run.png" class="personnage" id="perso" alt="" />
-            </div>
-            <div class="buttons-actions">
-                <button class="btn-action" onclick="reculer()"><</button>
-                <button class="btn-action" onclick="sauter()">^</button>
-                <button class="btn-action" onclick="avancer()">></button>
-            </div>
-        </div>
-        
+        </div> -->
     </div>
 
 </body>
+<script src="js/canvas_image.js"></script>
+
 </html>

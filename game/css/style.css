@@ -8,7 +8,7 @@ html, body, .game_container, .welcome_zone, .menu_zone {
 }
 
 .game_container {
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 
