@@ -1,4 +1,4 @@
-import DEPART_PLAYER from 'constants'
+import DEPART_PLAYER from './constants'
 console.log(DEPART_PLAYER)
 
 var canvas = document.getElementById('canvas'),
