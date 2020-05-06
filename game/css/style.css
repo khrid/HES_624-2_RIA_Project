@@ -12,7 +12,7 @@ html, body, .game_container, .welcome_zone, .menu_zone, .gameover_zone, .zone_wi
   }
 
 .game_container {
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 
