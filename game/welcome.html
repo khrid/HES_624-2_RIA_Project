@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+    <script>
+            function playSound() {
+                sonnerie.play();
+                }   
+    </script>
 </head>
 <body>
 <div class="game_container">
         <div class="welcome_zone">
+    
             <div class="zone_windows">
             
                     <div class="all_window">
@@ -34,6 +40,10 @@
                         <div class="window"></div>
                         <div class="window"></div>
                         <div class="window"></div>
+                    </div>
+                    <div class="bell" onclick="playSound();">
+                        <img src="images/bell.png"  alt="" />
+                        <audio controls="controls" id='sonnerie' src="../game/audio/sonnerie.mp3" type="audio/mp3"></audio>
                     </div>
                 
                 
@@ -64,7 +74,8 @@
                         <div class="window"></div>
                         <div class="window"></div>
                     </div>
-
+                    
+                    
             </div>
                         <div class="zone_windows">
             
