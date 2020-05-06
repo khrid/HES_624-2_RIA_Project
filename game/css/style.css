@@ -1,19 +1,269 @@
-html, body, .game_container {
+html, body, .game_container, .welcome_zone, .menu_zone, .gameover_zone, .zone_winner {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'BD Cartoon Shout';  
 }
 
+@font-face {
+    font-family:"BD Cartoon Shout";
+    src: url("../../ressources/fonts/BD_Cartoon_Shout.ttf") format("truetype");
+  }
+
 .game_container {
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
+
+
+
+
+/*
+PART 1 : WELCOME
+*/
+
+.all_window{
+    height: 20vh;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: hidden;
+}
+
+.welcome_zone{
+
+     background: #F09478; 
+}
+
+.zone_windows {
+    clear: both;
+    display: flex;
+    justify-content: center;
+
+}
+
+.window {
+    position: relative;
+    height: 10vh;
+    width: 7vh;
+    border: solid 5px #707070 ;
+    float: left;
+    background: #7E87AB ;
+}
+
+.welcome_door {
+    position: absolute;
+    height: 20vh;
+    width: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 5px #707070;
+    border-radius: 10px;
+    background: #AFAFAF;
+    text-align: center;
+    bottom: 5px;
+    left: calc(50% - 20vh);
+}
+
+.play_btn {
+    text-decoration: none;
+    color: #F09478;
+    font-size: 70px;
+    line-height: 21vh;  
+}
+
+
+.run_title{
+    color: #E5D59A;
+    font-size: 50px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top : auto;
+    padding-bottom: 70px; 
+}
+
+audio {
+    display: none;
+}
+
+.bell {
+    position: absolute;
+    top : 50px;
+    right : 50px;
+  
+}
+
+
+
+
+/*
+PART 2 : PLAYER CHOICE
+*/
+
+.menu_zone{
+    /*overflow: hidden;*/
+    background: #AFAFAF; 
+    color: #F09478;
+    font-size: 50px;
+    text-align: center;
+}
+
+.zone_head {
+    clear: both;
+    display: flex;
+    justify-content: center;
+}
+
+.zone_head a {
+    text-decoration: none;
+}
+
+.player_head {
+    position: relative;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 70%;
+    text-decoration: none; 
+}
+
+
+.player_head_title {
+    text-decoration: none;
+    color: #000000;
+    font-size: 30px;
+}
+
+.big_title{
+    color: #F09478;
+    font-size: 60px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
+    padding-bottom: 70px;   
+}
+
+
+
+
+/*
+PART 3 : LEVEL CHOICE
+*/
+
+.level_box {
+    position: relative;
+    height: 20vh;
+    width: 20vh;   
+    
+    margin-right: auto;
+    margin-left: auto;
+    
+    border: solid 5px #000000;
+    border-radius: 30px;
+    background: #F09478;
+    
+    float:left;
+   
+    text-decoration: none;
+    color: #000000;
+    font-size: 10vh;
+    line-height: 21vh;
+}
+
+.all_level{
+    clear: both;
+    display: flex;
+    justify-content: center;
+    padding-left: 40px;
+    padding-right: 40px; 
+}
+
+.dropzone{
+    position: relative;
+    margin-top: 15px;
+    padding: 30px;
+    border: solid 5px #000000;
+    border-radius: 30px;
+    height: 150px;
+    width: 150px;
+    color: #000000;
+    font-size: 7vh;
+    line-height: 21vh;
+}
+
+.back_btn {
+    position: absolute;
+    bottom: 50px;
+    left:50px;    
+}
+
+
+.continue_btn {
+    display: none;
+    position: absolute;
+    height: 10vh;
+    width: 20vh;   
+    
+    border: solid 3px #000000;
+    border-radius: 30px;
+    background: #F09478;
+
+    bottom: 50px;
+    right: 50px;
+    
+    color: #000000;
+    font-size: 22px;
+    line-height: 11vh;
+}
+
+
+
+
+/*
+PART 4 : RULES
+*/
+
+.rules_title{
+    color: #000000;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 70px;
+}
+
+
+.start_btn {
+    position: relative;
+    height: 10vh;
+    width: 40vh;   
+    
+    margin-right:  30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    
+    border: solid 3px #000000;
+    border-radius: 30px;
+    background: #F09478;
+
+    bottom: 250px;
+    left: calc(50% - 20vh);
+    
+    color: #000000;
+    font-size: 32px;
+    line-height: 11vh;
+}
+
+
+
+
+/*
+PART 5 : THE GAME 
+*/
 
 .play_zone {
     width: 10000px;
-/*     left: -2000px;
- */
 }
 
 .top_zone {
@@ -43,6 +293,7 @@ html, body, .game_container {
     position: absolute;
     bottom: 0;
     left: 500px;
+    display: flex;
 }
 
 
@@ -63,6 +314,120 @@ html, body, .game_container {
     writing-mode: tb-rl;
 }
 
+/*
+PART 6 : WINNER
+*/
+
+.zone_winner{
+
+}
+
+.top_zone_winner {
+    height: 50vh;
+    width: 100%;
+    background: #F6C97B;
+}
+
+.bottom_zone_winner {
+    height: 50vh;
+    width: 100%;
+    background: #9EA4B9;   
+}
+
+.bloc_result {
+    height: 300px;
+    width: 450px;
+    margin : auto;
+    border: solid 5px #707070;
+    background: #ffffff;
+    color: #FF7565;
+    font-size: 10vh;
+    line-height: 21vh;
+    text-align: center;
+    bottom: 5px;
+    left: calc(50% - 300px);    
+}
+
+.winner {
+    position : absolute;
+    left : 150px;
+    bottom : 200px;   
+}
+
+
+
+.table {
+    position : absolute;
+    right : 150px;
+    bottom : 150px;
+
+}
+
+.next_btn {
+    position: absolute;
+    height: 10vh;
+    width: 20vh;   
+    border: solid 3px #000000;
+    border-radius: 30px;
+    background: #F09478;
+    bottom: 50px;
+    right: 50px;
+    color: #000000;
+    font-size: 22px;
+    line-height: 11vh;
+    text-align: center;
+}
+
+
+
+
+/*
+PART 7 : GAMEOVER
+*/
+
+.gameover_zone{
+    background: #AFAFAF;
+    font-size: 90px;
+    text-align: center;
+    line-height: 8em;
+}
+.gameover_zone a{
+    text-decoration: none;
+    color: #F09478;
+}
+
+
+
+
+/*
+PART 8 : RESTART
+*/
+
+.zone_buttons {
+    position: relative;
+    padding-top: 100px;
+}
+
+.zone_buttons a {
+    text-decoration: none;
+}
+.restart_btn {
+    height: 15vh;
+    width: 60vh;   
+    margin-right:  auto;
+    margin-left: auto;
+    margin-top: 50px; 
+    border: solid 3px #000000;
+    border-radius: 30px;
+    background: #F09478;
+    color: #000000;
+    line-height: 16vh;
+}
+
+
+
+
+/* test */
 .buttons-actions {
     position: fixed;
     right: 0;
