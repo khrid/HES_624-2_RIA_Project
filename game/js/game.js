@@ -4,6 +4,7 @@ var canvas = document.getElementById('canvas'),
     level_data = null, // data from json, stored for processing
     level_data_processed = new Array(3),
     level_obstacles = null,
+    time_level = 0,
     level_classes = null;
 // CONSTANTS
 const DEPART_PLAYER = 0;
@@ -202,6 +203,7 @@ class Game {
                 if (this.readyState == 4 && this.status == 200) {
                     //console.log(this.responseText);
                     level_data = JSON.parse(this.responseText);
+                    time_level =  level_data.time_of_level
                     //console.log(db);
                     console.log("Level loaded.");
                     var i = 0;
@@ -254,6 +256,36 @@ function mainLoop(time) {
     game.drawObstacles();
     requestAnimationFrame(mainLoop);
 }
+
+// fonction du timer
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (timer < 10 && timer > 0) {
+            document.getElementById("time").style.color ="#ff0000";
+        }
+        if (--timer < 0) {
+            window.location.href="gameover.html";
+        }
+    }, 1000);
+}
+
+
+window.onload = function () {
+    display = document.querySelector('#time');
+    startTimer(time_level, display);
+};
+
+
+
 
 
 // Création des évènements du keyboard
