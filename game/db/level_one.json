@@ -1,0 +1,161 @@
+{
+  "time_of_level":120,
+  "floors": [
+    {
+      "classes": [
+        {
+          "number": 100
+        },
+        {
+          "number": 101
+        },
+        {
+          "number": 102
+        },
+        {
+          "number": 103
+        },
+        {
+          "number": 104
+        },
+        {
+          "number": 105
+        },
+        {
+          "number": 106
+        },
+        {
+          "number": 107
+        },
+        {
+          "number": 108
+        },
+        {
+          "number": 109
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 1500,
+          "type": "Chaise"
+        },
+        {
+          "location": 4554,
+          "type": "Escalier"
+        },
+        {
+          "location": 6980,
+          "type": "Table"
+        },
+        {
+          "location": 9950,
+          "type": "Table"
+        }
+      ]
+    },
+    {
+      "classes": [
+        {
+          "number": 200
+        },
+        {
+          "number": 201
+        },
+        {
+          "number": 202
+        },
+        {
+          "number": 203
+        },
+        {
+          "number": 204
+        },
+        {
+          "number": 205
+        },
+        {
+          "number": 206
+        },
+        {
+          "number": 207
+        },
+        {
+          "number": 208
+        },
+        {
+          "number": 209
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 1500,
+          "type": "Chaise"
+        },
+        {
+          "location": 4554,
+          "type": "Escalier"
+        },
+        {
+          "location": 6980,
+          "type": "Table"
+        },
+        {
+          "location": 9950,
+          "type": "Table"
+        }
+      ]
+    },
+    {
+      "classes": [
+        {
+          "number": 300
+        },
+        {
+          "number": 301
+        },
+        {
+          "number": 302
+        },
+        {
+          "number": 303
+        },
+        {
+          "number": 304
+        },
+        {
+          "number": 305
+        },
+        {
+          "number": 306
+        },
+        {
+          "number": 307
+        },
+        {
+          "number": 308
+        },
+        {
+          "number": 309
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 1500,
+          "type": "Chaise"
+        },
+        {
+          "location": 4554,
+          "type": "Escalier"
+        },
+        {
+          "location": 6980,
+          "type": "Table"
+        },
+        {
+          "location": 9950,
+          "type": "Table"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+    <title>Hall of fame</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="ressources/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="ressources/js/script.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>HES-SO Vs - 624-2 - HTML/CSS/JavaScript</h1>
+    <nav>
+        <!-- Hamburger -->
+        <ul>
+            <li class="hamburger" onclick="displayMenu()">
+                <img src="ressources/images/hamburger_icon.svg">
+            </li>
+            <li>
+                <a href="index.html">Description</a>
+            </li>
+            <li>
+                <a href="maquettes.html">Maquettes</a>
+            </li>
+            <li>
+                <a href="mockup.html">Mockup</a>
+            </li>
+            <li>
+                <a href="flux.html">Flux</a>
+            </li>
+            <li>
+                <a href="journal_de_bord.html">Journal de bord</a>
+            </li>
+            <li>
+                <a href="jeu.html">Jeu</a>
+            </li>
+            <li class="active">
+                <a href="hof.html">Hall of fame</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<main>
+    <!-- Début zone pour votre contenu -->
+    <section id="articles">
+        <article>
+            <header>
+                <h2>Hall of fame</h2>
+                <p><i>Par Louise, Albain, David</i></p>
+            </header>
+        </article>
+        <article style="text-align: center">
+            <table id="hof">
+                <tr>
+                    <th></th>
+                    <th class="hof-table-score">Score</th>
+                    <th class="hof-table-player">Joueur</th>
+                    <th class="hof-table-localisation">Localisation</th>
+                    <th class="hof-table-timestamp">Date</th>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <!-- >Fin zone pour votre contenu -->
+</main>
+
+<footer>
+    <img id="logo" src="ressources/images/logo.png">
+</footer>
+
+</body>
+
+<script>
+    // chargement du contenu de la base de données (fichier .json)
+    var db;
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            //console.log(this.responseText);
+            db = JSON.parse(this.responseText);
+            //console.log(db);
+            console.log("Base de données des scores chargée.");
+        } else if(this.status == 404) {
+            console.log("Base de données des scores introuvable.")
+        }
+    };
+    xhttp.open("GET", "game/db/hof.json", false); // FALSE POUR ATTENDRE LA RÉPONSE
+    xhttp.send();
+
+
+    if (db != null) {
+        if (db.length > 0) {
+
+            // tri des enregistrements
+            db.sort(function (a, b) {
+                return parseInt(b.score) - parseInt(a.score);
+            });
+
+            // affichage
+            table = document.getElementById("hof");
+            console.log(table);
+            for (var line in db) {
+                console.log(line);
+                row = table.insertRow(-1);
+                if(line <= 2) { // pour les 3 premiers (index à 0)
+                    row.className = "hof-top-"+(+line+1); // "+line" pour forcer l'addition comme des chiffres
+                    if(line == 0) row.insertCell(0).innerHTML = "🥇";
+                    else if(line == 1) row.insertCell(0).innerHTML = "🥈";
+                    else if(line == 2) row.insertCell(0).innerHTML = "🥉";
+                } else {
+                    row.insertCell(0).innerHTML = "#"+(+line+1);
+                }
+
+                row.insertCell(1).innerHTML = db[line].score;
+                row.insertCell(2).innerHTML = db[line].player;
+                row.insertCell(3).innerHTML = db[line].from;
+                row.insertCell(4).innerHTML = db[line].timestamp;
+            }
+        }
+    }
+
+</script>
+
+</html>
