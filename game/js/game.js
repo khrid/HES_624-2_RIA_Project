@@ -2,8 +2,8 @@ var canvas = document.getElementById('canvas'),
     game_container = document.getElementById('game_container'),
     ctx = canvas.getContext('2d'),
     level_data = null, // data from json, stored for processing
-    level_data_processed = new Array(3); // processed data
-
+    level_data_processed = new Array(3),
+    time_level = 0;
 // CONSTANTS
 const DEPART_PLAYER = 0;
 const GAME_HEIGHT = game_container.offsetHeight;
@@ -129,6 +129,19 @@ class Player {
             ctx.translate(-this.dx, 0);
         }
 
+        // Test du contact avec les bordures du canvas
+        if (this.x-this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - this.width) {
+            var currObsta = game.checkIfColision(this.x, this.width, currentFloor);
+            if(currObsta != null) {
+                this.x = (currObsta.location-this.width)
+                console.log(currObsta)
+            } else {
+                ctx.translate(-this.dx, 0);
+            }
+            // 
+        }
+        
+        
     }
 
     draw() {
@@ -141,6 +154,11 @@ class Player {
         game.drawImg(this.img, this.x, this.y, this.width, this.height);
         this.onRun = false
     }
+}
+function drawImageTest(ctx, frame) {
+    ctx.drawImage(frame.buffer, 0, 0)
+}
+        
 
     vibrate() {
         console.log("vibrate");
@@ -158,6 +176,7 @@ porte.src = "images/porte.png";
 
 class Game {
 
+
     drawImg(img, x, y, width, height) {
         ctx.drawImage(img, x, y, width, height);
     }
@@ -169,7 +188,6 @@ class Game {
         ctx.fill();
         ctx.closePath();
     }
-
 
 
     drawEscalier() {
@@ -229,6 +247,7 @@ class Game {
                 if (this.readyState == 4 && this.status == 200) {
                     //console.log(this.responseText);
                     level_data = JSON.parse(this.responseText);
+                    time_level =  level_data.time_of_level
                     //console.log(db);
                     console.log("Level loaded.");
                     var i = 0;
@@ -263,6 +282,15 @@ class Game {
             xhttp.send();
         }
     }
+    checkIfColision(x, width, currentFloor) {
+        var obst = level_data.floors[currentFloor].obstacles
+        for (let i = 0; i < obst.length; i++) {
+            if(x >= (obst[i].location-width) && x <= (obst[i].location + 500)){
+                return obst[i]
+            }
+        }
+        return null;
+    }
 
     randomizedTargetClassroom() {
         let min = 1, max = 3;
@@ -283,6 +311,36 @@ function mainLoop(time) {
     game.drawObstacles();
     requestAnimationFrame(mainLoop);
 }
+
+// fonction du timer
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (timer < 10 && timer > 0) {
+            document.getElementById("time").style.color ="#ff0000";
+        }
+        if (--timer < 0) {
+            window.location.href="gameover.html";
+        }
+    }, 1000);
+}
+
+
+window.onload = function () {
+    display = document.querySelector('#time');
+    startTimer(time_level, display);
+};
+
+
+
 
 
 // Création des évènements du keyboard
@@ -330,7 +388,7 @@ class Obstacle {
 }
 
 class Classe {
-    constructor(num, win = 0, location) {
+    constructor(num, win = 0) {
         this.num = num;
         this.win = win;
         this.location = location;

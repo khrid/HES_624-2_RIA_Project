@@ -1,10 +1,10 @@
 {
+  "time_of_level":120,
   "floors": [
     {
       "classes": [
         {
-          "number": 100,
-          "win": 1
+          "number": 100
         },
         {
           "number": 101

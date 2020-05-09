@@ -263,6 +263,15 @@ PART 4 : RULES
 PART 5 : THE GAME 
 */
 
+
+.time_title{
+    position : fixed;
+    color: #000000;
+    font-size: 40px;
+    right : 30px;
+    top : 30px;
+}
+
 .play_zone {
     width: 10000px;
 }
