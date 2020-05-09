@@ -69,7 +69,7 @@ PART 1 : WELCOME
 .play_btn {
     text-decoration: none;
     color: #F09478;
-    font-size: 70px;
+    font-size: 60px;
     line-height: 21vh;  
 }
 
@@ -142,8 +142,8 @@ PART 2 : PLAYER CHOICE
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 100px;
-    padding-bottom: 70px;   
+    padding-top: 45px;
+    padding-bottom: 10px;
 }
 
 
@@ -333,21 +333,21 @@ PART 6 : WINNER
 }
 
 .top_zone_winner {
-    height: 50vh;
+    height: 66%;
     width: 100%;
     background: #F6C97B;
 }
 
 .bottom_zone_winner {
-    height: 50vh;
+    height: 33%;
     width: 100%;
     background: #9EA4B9;   
 }
 
 .bloc_result {
-    height: 300px;
+    height: 250px;
     width: 450px;
-    margin : auto;
+    margin: auto;
     border: solid 5px #707070;
     background: #ffffff;
     color: #FF7565;
@@ -355,22 +355,21 @@ PART 6 : WINNER
     line-height: 21vh;
     text-align: center;
     bottom: 5px;
-    left: calc(50% - 300px);    
+    left: calc(50% - 300px);
 }
 
 .winner {
-    position : absolute;
-    left : 150px;
-    bottom : 200px;   
+    position: absolute;
+    left: 150px;
+    bottom: 100px;
 }
 
 
 
 .table {
-    position : absolute;
-    right : 150px;
-    bottom : 150px;
-
+    position: absolute;
+    right: 150px;
+    bottom: 36px;
 }
 
 .next_btn {
@@ -415,7 +414,7 @@ PART 8 : RESTART
 
 .zone_buttons {
     position: relative;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .zone_buttons a {

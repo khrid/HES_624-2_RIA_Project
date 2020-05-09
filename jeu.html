@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<header>
+<section class="header">
     <h1>HES-SO Vs - 624-2 - HTML/CSS/JavaScript</h1>
     <nav>
         <!-- Hamburger -->
@@ -41,7 +41,7 @@
             </li>
         </ul>
     </nav>
-</header>
+</section>
 
 
 <main>
@@ -55,7 +55,7 @@
         </article>
         <article>
             <div id="game" style="width: 720px; height: 480px; margin: auto">
-                <iframe src="game/index.html" width="720px" height="480px"></iframe><br/>
+                <iframe src="game/welcome.html" width="1200px" height="530px"></iframe><br/>
                 <input type="button" value="Oubliez moi !" onclick="deleteCookie()">
             </div>
             <div id="game-login" style="display: none">
@@ -110,8 +110,8 @@
 
     console.log(document.cookie);
 
-    cookieName = "runhessorun-currentplayer";
-    if (getCookieValue(cookieName) != '') {
+    target = "runhessorun-currentplayer";
+    if (window.localStorage.getItem(target) != null) {
         // si l'utilisateur a un cookie avec son pseudo, il peut jouer
         document.getElementById("game-login").style = "display: none;";
         document.getElementById("game").style = "display: block;";
@@ -125,19 +125,14 @@
         if(document.getElementById("pseudo").value === "") {
             alert("Le pseudo ne peut pas être vide.");
         } else {
-            document.cookie = cookieName + "=" + document.getElementById("pseudo").value;
+            window.localStorage.setItem(target, document.getElementById("pseudo").value);
             location.reload();
         }
     }
 
     function deleteCookie() {
-        document.cookie = cookieName+"= ; expires = -9";
+        window.localStorage.removeItem(target);
         location.reload();
-    }
-
-    function getCookieValue(a) {
-        var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
-        return b ? b.pop() : '';
     }
 
 </script>
