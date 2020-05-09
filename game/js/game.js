@@ -78,7 +78,7 @@ class Player {
             if(currentFloor < 3) {
                 currentFloor++;
                 this.x = DEPART_PLAYER;
-                ctx.translate(ctx.canvas.width,0);
+                //ctx.translate(ctx.canvas.width,0);
             } else {
                 this.x = ctx.canvas.width - this.width ;
             }
@@ -86,7 +86,7 @@ class Player {
             if(currentFloor > 1) {
                 currentFloor--;
                 this.x = ctx.canvas.width - this.width ;
-                ctx.translate(-ctx.canvas.width,0);
+                //ctx.translate(-ctx.canvas.width,0);
             } else {
                 this.x = DEPART_PLAYER;
             }
@@ -95,23 +95,32 @@ class Player {
 
         // Test du contact avec les bordures du canvas
         if (this.x-this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - this.width) {
-            ctx.translate(-this.dx, 0);
+            var currObsta = game.checkIfColision(this.x, this.width, currentFloor);
+            if(currObsta != null) {
+                this.x = (currObsta.location-this.width)
+                console.log(currObsta)
+            } else {
+                ctx.translate(-this.dx, 0);
+            }
+            // 
         }
-
+        
+        
     }
 
     draw() {
-        if (this.onGround) {
+        if (!this.onGround) {
             this.img.src = 'images/bitmoji/lou_run.png';
         } else {
-            this.img.src = 'images/bitmoji/lou_run_2.png';
+            this.img.src = 'images/bitmoji/lou_walk.png';
         }
-
         game.drawImg(this.img, this.x, this.y, this.height, this.width);
         this.onRun = false
     }
 }
-
+function drawImageTest(ctx, frame) {
+    ctx.drawImage(frame.buffer, 0, 0)
+}
 const escalier = new Image();
 escalier.src = 'images/escalier.png'
 
@@ -121,10 +130,8 @@ table.src = "images/table.png";
 const porte = new Image();
 porte.src = "images/porte.png";
 
-const escalier = new Image();
-escalier.src = "images/escalier.png";
-
 class Game {
+
 
     drawImg(img, x, y, width, height) {
         ctx.drawImage(img, x, y, height, width);
@@ -137,7 +144,6 @@ class Game {
         ctx.fill();
         ctx.closePath();
     }
-
 
 
     drawEscalier() {
@@ -165,15 +171,15 @@ class Game {
         var i = 1;
         ctx.save();
         level_data_processed[currentFloor-1][0].forEach(function (classe) {
-            game.drawImg(porte , offset*i, GAME_HEIGHT-700, 350, 175);
+            //game.drawImg(porte , offset*i, GAME_HEIGHT-700, 350, 175);
             ctx.fillStyle = "#afafaf";
             ctx.font  = '100px "BD Cartoon Shout"';
             var num = classe.num+"";
             ctx.textBaseline = 'middle';
             ctx.textAlign = "center";
-            ctx.fillText(num.substr(0,1), (offset*i)+50,GAME_HEIGHT-620);
-            ctx.fillText(num.substr(1,1), (offset*i)+50,GAME_HEIGHT-520);
-            ctx.fillText(num.substr(2,1), (offset*i)+50,GAME_HEIGHT-420);
+            ctx.fillText(num.substr(0,1), (offset*i)+50, GAME_HEIGHT-620);
+            ctx.fillText(num.substr(1,1), (offset*i)+50, GAME_HEIGHT-520);
+            ctx.fillText(num.substr(2,1), (offset*i)+50, GAME_HEIGHT-420);
             i++;
         });
         ctx.restore();
@@ -226,6 +232,15 @@ class Game {
             xhttp.open("GET", "db/level_one.json", false);
             xhttp.send();
         }
+    }
+    checkIfColision(x, width, currentFloor) {
+        var obst = level_data.floors[currentFloor].obstacles
+        for (let i = 0; i < obst.length; i++) {
+            if(x >= (obst[i].location-width) && x <= (obst[i].location + 500)){
+                return obst[i]
+            }
+        }
+        return null
     }
 }
 
