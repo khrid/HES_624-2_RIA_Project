@@ -9,7 +9,7 @@ const DEPART_PLAYER = 0;
 const GAME_HEIGHT = 530;
 const GAME_WIDTH = window.screen.width;
 const GAME_PLAY = {
-    gravity: 1, // strength per frame of gravity
+    gravity: 0.8, // strength per frame of gravity
     drag: 0.999, // play with this value to change drag
     groundDrag: 0.9, // play with this value to change ground movement
     ground: GAME_HEIGHT - 100,
@@ -27,7 +27,7 @@ console.log(document.getElementById("canvas").getAttribute("height"));
 
 
 class Player {
-    constructor(img, width, height, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 15) {
+    constructor(img, width, height, name, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 15) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -40,6 +40,8 @@ class Player {
         this.jumpPower = jumpPower;
         this.moveSpeed = moveSpeed;
         this.drink = false;
+        this.ground = GAME_PLAY.ground;
+        this.name = name
     }
 
     update() {
@@ -96,13 +98,16 @@ class Player {
         this.x += this.dx;
 
         // Test du contact avec le sol
-        if (this.y + this.height >= GAME_PLAY.ground) {
-            this.y = GAME_PLAY.ground - this.height;
+        if (this.y + this.height >= this.ground) {
+            this.y = this.ground - this.height;
             this.dy = 0;
             this.onGround = true;
         } else {
             this.onGround = false;
         }
+
+        // TODO manager le deplacement du canvas si colision avec obstacle
+
         // Test du contact avec les bordures du canvas
         if (this.x > ctx.canvas.width - this.width) {
             if (currentFloor < 3) {
@@ -110,7 +115,7 @@ class Player {
                 console.log(this.x);
                 this.x = DEPART_PLAYER + 200;
                 console.log(this.x);
-                ctx.translate(ctx.canvas.width - 1550, 0);
+                // ctx.translate(ctx.canvas.width - 1550, 0);
             } else {
                 this.x = ctx.canvas.width - this.width;
             }
@@ -119,7 +124,7 @@ class Player {
                 currentFloor--;
                 this.x = ctx.canvas.width - this.width;
                 console.log(-ctx.canvas.width);
-                ctx.translate(-ctx.canvas.width + 1600, 0);
+                // ctx.translate(-ctx.canvas.width + 1600, 0);
             } else {
                 this.x = DEPART_PLAYER;
             }
@@ -127,31 +132,43 @@ class Player {
 
         // Test du contact avec les bordures du canvas
         if (this.x - this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - 1200) {
-            ctx.translate(-this.dx, 0);
+            // ctx.translate(-this.dx, 0);
         }
 
         // Test du contact avec les bordures du canvas
-        /*if (this.x - this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - this.width) {
+        if (this.x - this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - this.width) {
             var currObsta = game.checkIfColision(this.x, this.width, currentFloor);
-            if (currObsta != null) {
-                this.x = (currObsta.location - this.width)
-                console.log(currObsta)
+            if(currObsta != null) {
+
+                if((this.y+this.height) <= (GAME_PLAY.ground-150)) {
+                   this.ground = GAME_PLAY.ground-150;
+                   ctx.translate(-this.dx, 0);
+                } else {
+                    this.ground = GAME_PLAY.ground;
+                    if(this.x >= (currObsta.location-this.width) && this.x <= (currObsta.location-this.width+100)) {
+                        this.x = currObsta.location-this.width;
+                    } else {
+                        this.x = currObsta.location+300;
+                    }
+                }
             } else {
+                this.ground = GAME_PLAY.ground;
                 ctx.translate(-this.dx, 0);
             }
-            // 
-        }*/
-
-
+        }
+        
+        
     }
 
     draw() {
+        var direction = '';
+        // if(keyboard.left) {
+        //     direction = 'l'
+        // }
         if (!this.onGround) {
-            let name = window.localStorage.getItem('name');
-            this.img.src = 'images/bitmoji/'+name+'_run.png';
+            this.img.src = 'images/bitmoji/'+this.name+'_run'+direction+'.png';
         } else {
-            let name = window.localStorage.getItem('name');
-            this.img.src = 'images/bitmoji/'+name+'_walk.png';
+            this.img.src = 'images/bitmoji/'+this.name+'_walk'+direction+'.png';
         }
 
         game.drawImg(this.img, this.x, this.y, this.width, this.height);
@@ -205,10 +222,8 @@ class Game {
     }
 
     drawObstacles() {
-
-        level_data_processed[currentFloor - 1][1].forEach(function (obstacle) {
-            //console.log(obstacle);
-            game.drawImg(table, obstacle.location, GAME_HEIGHT - 250, 200, 250);
+        level_data_processed[currentFloor-1][1].forEach(function (obstacle) {
+            game.drawImg(obstacle.img, obstacle.location, GAME_PLAY.ground-150, 300, 300);
         });
     }
 
@@ -269,7 +284,7 @@ class Game {
                         });
                         floor.obstacles.forEach(function (obstacle) {
                             //console.log(classe);
-                            level_data_processed[i][1].push(new Obstacle(obstacle.location, obstacle.type));
+                            level_data_processed[i][1].push(new Obstacle(obstacle.location, obstacle.type, obstacle.img_file));
                         });
                         i++
                     });
@@ -289,7 +304,7 @@ class Game {
     checkIfColision(x, width, currentFloor) {
         var obst = level_data.floors[currentFloor].obstacles
         for (let i = 0; i < obst.length; i++) {
-            if (x >= (obst[i].location - width) && x <= (obst[i].location + 500)) {
+            if(x >= (obst[i].location-width) && x <= (obst[i].location + 300)){
                 return obst[i]
             }
         }
@@ -381,10 +396,12 @@ const keyboard = (() => {
 
 
 class Obstacle {
-    constructor(location, type, taille = 60) {
+    constructor(location, type, img_file, taille = 60) {
         this.location = location;
         this.type = type;
         this.taille = taille;
+        this.img = new Image();
+        this.img.src = "images/Obstacles/" + img_file; 
     }
 }
 
@@ -397,7 +414,7 @@ class Classe {
 }
 
 
-const player = new Player(image_player, 200, 280);
+const player = new Player(image_player, 200, 280, window.localStorage.getItem('name'));
 const game = new Game();
 game.processLevelDb();
 requestAnimationFrame(mainLoop);
