@@ -161,14 +161,14 @@ class Player {
     }
 
     draw() {
-        var direction = '';
-        // if(keyboard.left) {
-        //     direction = 'l'
-        // }
+        var direction = 'r';
+        if(keyboard.left) {
+            direction = 'l'
+        }
         if (!this.onGround) {
-            this.img.src = 'images/bitmoji/'+this.name+'_run'+direction+'.png';
+            this.img.src = 'images/bitmoji/'+this.name+'_run_'+direction+'.png';
         } else {
-            this.img.src = 'images/bitmoji/'+this.name+'_walk'+direction+'.png';
+            this.img.src = 'images/bitmoji/'+this.name+'_walk_'+direction+'.png';
         }
 
         game.drawImg(this.img, this.x, this.y, this.width, this.height);

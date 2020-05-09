@@ -233,15 +233,20 @@ PART 4 : RULES
 
 .rules_title{
     color: #000000;
-    font-size: 50px;
+    font-size: 30px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 70px;
+    padding-top: 30px;
 }
 
-
-.start_btn {
+.keyboard {
     position: relative;
+    width: 50%;
+    height: auto;
+    margin-top: 100px;
+}
+.start_btn {
+    position: absolute;
     height: 10vh;
     width: 40vh;   
     
@@ -253,7 +258,7 @@ PART 4 : RULES
     border-radius: 30px;
     background: #F09478;
 
-    bottom: 250px;
+    bottom: 10px;
     left: calc(50% - 20vh);
     
     color: #000000;
