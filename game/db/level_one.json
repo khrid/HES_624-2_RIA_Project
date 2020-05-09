@@ -36,19 +36,25 @@
       "obstacles": [
         {
           "location": 1500,
-          "type": "Chaise"
+          "type": "Chaise",
+          "img_file": "chair3.png"
+
         },
         {
           "location": 4554,
-          "type": "Escalier"
+          "type": "Escalier",
+          "img_file": "plant2.png"
+
         },
         {
           "location": 6980,
-          "type": "Table"
+          "type": "Table",
+          "img_file": "plant2.png"
         },
         {
           "location": 9950,
-          "type": "Table"
+          "type": "Table",
+          "img_file": "plant2.png"
         }
       ]
     },
@@ -88,19 +94,25 @@
       "obstacles": [
         {
           "location": 1500,
-          "type": "Chaise"
+          "type": "Chaise",
+          "img_file": "chair3.png"
+
         },
         {
           "location": 4554,
-          "type": "Escalier"
+          "type": "Escalier",
+          "img_file": "plant2.png"
+
         },
         {
           "location": 6980,
-          "type": "Table"
+          "type": "Table",
+          "img_file": "plant2.png"
         },
         {
           "location": 9950,
-          "type": "Table"
+          "type": "Table",
+          "img_file": "plant2.png"
         }
       ]
     },
@@ -140,19 +152,25 @@
       "obstacles": [
         {
           "location": 1500,
-          "type": "Chaise"
+          "type": "Chaise",
+          "img_file": "chair3.png"
+
         },
         {
           "location": 4554,
-          "type": "Escalier"
+          "type": "Escalier",
+          "img_file": "plant2.png"
+
         },
         {
           "location": 6980,
-          "type": "Table"
+          "type": "Table",
+          "img_file": "plant2.png"
         },
         {
           "location": 9950,
-          "type": "Table"
+          "type": "Table",
+          "img_file": "plant2.png"
         }
       ]
     }

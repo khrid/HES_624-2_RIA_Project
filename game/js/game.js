@@ -10,7 +10,7 @@ const DEPART_PLAYER = 0;
 const GAME_HEIGHT = game_container.offsetHeight;
 const GAME_WIDTH = window.screen.width;
 const GAME_PLAY = {
-    gravity: 1, // strength per frame of gravity
+    gravity: 0.8, // strength per frame of gravity
     drag: 0.999, // play with this value to change drag
     groundDrag: 0.9, // play with this value to change ground movement
     ground: GAME_HEIGHT - 300,
@@ -41,6 +41,7 @@ class Player {
         this.jumpPower = jumpPower;
         this.moveSpeed = moveSpeed;
         this.drink = false;
+        this.ground = GAME_PLAY.ground;
     }
 
     update() {
@@ -66,8 +67,8 @@ class Player {
         this.x += this.dx;
 
         // Test du contact avec le sol
-        if (this.y + this.height >= GAME_PLAY.ground) {
-            this.y = GAME_PLAY.ground - this.height;
+        if (this.y + this.height >= this.ground) {
+            this.y = this.ground - this.height;
             this.dy = 0;
             this.onGround = true;
         } else {
@@ -96,13 +97,25 @@ class Player {
         // Test du contact avec les bordures du canvas
         if (this.x-this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - this.width) {
             var currObsta = game.checkIfColision(this.x, this.width, currentFloor);
+            //console.log((this.ground-this.y) > (GAME_PLAY.ground-150))
+
             if(currObsta != null) {
-                this.x = (currObsta.location-this.width)
-                console.log(currObsta)
+
+                if((this.y+this.height) <= (GAME_PLAY.ground-100)) {
+                   this.ground = GAME_PLAY.ground-100;
+                   ctx.translate(-this.dx, 0);
+                } else {
+                    this.ground = GAME_PLAY.ground;
+                    if(this.x >= (currObsta.location-this.width) && this.x <= (currObsta.location-this.width+100)) {
+                        this.x = currObsta.location-this.width;
+                    } else {
+                        this.x = currObsta.location+300;
+                    }
+                }
             } else {
+                this.ground = GAME_PLAY.ground;
                 ctx.translate(-this.dx, 0);
             }
-            // 
         }
         
         
@@ -114,10 +127,12 @@ class Player {
         } else {
             this.img.src = 'images/bitmoji/lou_walk.png';
         }
-        game.drawImg(this.img, this.x, this.y, this.height, this.width);
+        game.drawImg(this.img, this.x, this.y, this.width, this.height, keyboard.left);
+        
         this.onRun = false
     }
 }
+
 function drawImageTest(ctx, frame) {
     ctx.drawImage(frame.buffer, 0, 0)
 }
@@ -134,7 +149,7 @@ class Game {
 
 
     drawImg(img, x, y, width, height) {
-        ctx.drawImage(img, x, y, height, width);
+        ctx.drawImage(img, x, y, width, height);
     }
 
     drawRect(x, y, width, height, color) {
@@ -159,10 +174,8 @@ class Game {
     }
 
     drawObstacles() {
-
         level_data_processed[currentFloor-1][1].forEach(function (obstacle) {
-            //console.log(obstacle);
-            game.drawImg(table , obstacle.location, GAME_HEIGHT-500, 500, 500);
+            game.drawImg(obstacle.img, obstacle.location, GAME_PLAY.ground-150, 300, 300);
         });
     }
 
@@ -217,7 +230,7 @@ class Game {
                         });
                         floor.obstacles.forEach(function (obstacle) {
                             //console.log(classe);
-                            level_data_processed[i][1].push(new Obstacle(obstacle.location, obstacle.type));
+                            level_data_processed[i][1].push(new Obstacle(obstacle.location, obstacle.type, obstacle.img_file));
                         });
                         i++
                     });
@@ -236,7 +249,7 @@ class Game {
     checkIfColision(x, width, currentFloor) {
         var obst = level_data.floors[currentFloor].obstacles
         for (let i = 0; i < obst.length; i++) {
-            if(x >= (obst[i].location-width) && x <= (obst[i].location + 500)){
+            if(x >= (obst[i].location-width) && x <= (obst[i].location + 300)){
                 return obst[i]
             }
         }
@@ -290,10 +303,12 @@ const keyboard = (() => {
 
 
 class Obstacle {
-    constructor(location, type, taille = 60) {
+    constructor(location, type, img_file, taille = 60) {
         this.location = location;
         this.type = type;
         this.taille = taille;
+        this.img = new Image();
+        this.img.src = "images/Obstacles/" + img_file; 
     }
 }
 
