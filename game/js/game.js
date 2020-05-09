@@ -111,9 +111,11 @@ class Player {
 
     draw() {
         if (!this.onGround) {
-            this.img.src = 'images/bitmoji/lou_run.png';
+            let name = window.localStorage.getItem('name');
+            this.img.src = 'images/bitmoji/'+name+'_run.png';
         } else {
-            this.img.src = 'images/bitmoji/lou_walk.png';
+            let name = window.localStorage.getItem('name');
+            this.img.src = 'images/bitmoji/'+name+'_walk.png';
         }
         game.drawImg(this.img, this.x, this.y, this.height, this.width);
         this.onRun = false
