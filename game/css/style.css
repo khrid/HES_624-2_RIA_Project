@@ -1,5 +1,6 @@
 html, body, .game_container, .welcome_zone, .menu_zone, .gameover_zone, .zone_winner {
     height: 100%;
+    /*width: 20000px !important;*/
     width: 100%;
     margin: 0;
     padding: 0;

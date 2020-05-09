@@ -3,9 +3,7 @@ var canvas = document.getElementById('canvas'),
     ctx = canvas.getContext('2d'),
     level_data = null, // data from json, stored for processing
     level_data_processed = new Array(3),
-    level_obstacles = null,
-    time_level = 0,
-    level_classes = null;
+    time_level = 0;
 // CONSTANTS
 const DEPART_PLAYER = 0;
 const GAME_HEIGHT = game_container.offsetHeight;
@@ -17,6 +15,8 @@ const GAME_PLAY = {
     ground: GAME_HEIGHT - 300,
 };
 var currentFloor = 1;
+var offset = 1000; // pas entre les portes
+var spacebarPressed = 0;
 
 ctx.canvas.width = 12000;
 ctx.canvas.height = GAME_HEIGHT;
@@ -59,6 +59,34 @@ class Player {
         if (keyboard.drink) {
             this.drink = true;
         }
+        // TODO sortir de là pour éviter d'avoir le check chaque fraction de seconde
+        if(keyboard.spacebar) {
+            if(spacebarPressed == 0) {
+                spacebarPressed = 1;
+                console.log("spacebar pressed");
+
+                let x = this.x;
+                let winner = 0;
+                // les portes
+                level_data_processed[currentFloor-1][0].forEach(function (classe) {
+                    if(classe.win == 1) {
+                        console.log(classe.location);
+                        console.log(x);
+                        console.log(classe.location + 175);
+                        if (x >= classe.location * 0.9 && (classe.location + 175) * 1.1 >= x) {
+                            winner = 1;
+                        }
+                    }
+                });
+
+                if(winner) {
+                    window.location.href = "winner.html";
+                } else {
+                    this.vibrate();
+                }
+                spacebarPressed = 0;
+            }
+        }
 
         this.dy += GAME_PLAY.gravity;
         this.dy *= GAME_PLAY.drag;
@@ -78,8 +106,10 @@ class Player {
         if (this.x > ctx.canvas.width - this.width) {
             if(currentFloor < 3) {
                 currentFloor++;
-                this.x = DEPART_PLAYER;
-                //ctx.translate(ctx.canvas.width,0);
+                console.log(this.x);
+                this.x = DEPART_PLAYER+200;
+                console.log(this.x);
+                ctx.translate(ctx.canvas.width-1550,0);
             } else {
                 this.x = ctx.canvas.width - this.width ;
             }
@@ -87,12 +117,17 @@ class Player {
             if(currentFloor > 1) {
                 currentFloor--;
                 this.x = ctx.canvas.width - this.width ;
-                //ctx.translate(-ctx.canvas.width,0);
+                console.log(-ctx.canvas.width);
+                ctx.translate(-ctx.canvas.width+1600,0);
             } else {
                 this.x = DEPART_PLAYER;
             }
         }
 
+        // Test du contact avec les bordures du canvas
+        if (this.x-this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - 1200) {
+            ctx.translate(-this.dx, 0);
+        }
 
         // Test du contact avec les bordures du canvas
         if (this.x-this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - this.width) {
@@ -110,18 +145,26 @@ class Player {
     }
 
     draw() {
-        if (!this.onGround) {
-            this.img.src = 'images/bitmoji/lou_run.png';
-        } else {
+        if (this.onGround) {
             this.img.src = 'images/bitmoji/lou_walk.png';
+        } else {
+            this.img.src = 'images/bitmoji/lou_run.png';
         }
-        game.drawImg(this.img, this.x, this.y, this.height, this.width);
+
+        game.drawImg(this.img, this.x, this.y, this.width, this.height);
         this.onRun = false
     }
 }
 function drawImageTest(ctx, frame) {
     ctx.drawImage(frame.buffer, 0, 0)
 }
+        
+
+    vibrate() {
+        console.log("vibrate");
+    }
+}
+
 const escalier = new Image();
 escalier.src = 'images/escalier.png'
 
@@ -135,7 +178,7 @@ class Game {
 
 
     drawImg(img, x, y, width, height) {
-        ctx.drawImage(img, x, y, height, width);
+        ctx.drawImage(img, x, y, width, height);
     }
 
     drawRect(x, y, width, height, color) {
@@ -148,14 +191,13 @@ class Game {
 
 
     drawEscalier() {
-        // escalier à la fin de l'étage 1 et 2
-        if(currentFloor < 3 ) {
-            //game.drawImg(escalier , obstacle.location, GAME_HEIGHT-500, 500, 500);
-        }
-
-        // escalier au début de l'étage 2 et 3
-        if(currentFloor > 1) {
-
+        if(currentFloor == 1 ) {
+            game.drawImg(escalier , 12000, GAME_HEIGHT-500, 500, 500);
+        } else if (currentFloor == 2) {
+            game.drawImg(escalier , 12300, GAME_HEIGHT-500, 500, 500);
+            game.drawImg(escalier , 0, GAME_HEIGHT-350, 500, 500);
+        } else if (currentFloor == 3) {
+            game.drawImg(escalier , 0, GAME_HEIGHT-350, 500, 500);
         }
     }
 
@@ -168,19 +210,21 @@ class Game {
     }
 
     drawDoors() {
-        var offset = 1000;
-        var i = 1;
         ctx.save();
+        var i = 1;
         level_data_processed[currentFloor-1][0].forEach(function (classe) {
-            //game.drawImg(porte , offset*i, GAME_HEIGHT-700, 350, 175);
+            game.drawImg(porte , classe.location, GAME_HEIGHT-700, 175, 350);
             ctx.fillStyle = "#afafaf";
+            if(classe.win == 1) {
+                ctx.fillStyle = "red";
+            }
             ctx.font  = '100px "BD Cartoon Shout"';
             var num = classe.num+"";
             ctx.textBaseline = 'middle';
             ctx.textAlign = "center";
-            ctx.fillText(num.substr(0,1), (offset*i)+50, GAME_HEIGHT-620);
-            ctx.fillText(num.substr(1,1), (offset*i)+50, GAME_HEIGHT-520);
-            ctx.fillText(num.substr(2,1), (offset*i)+50, GAME_HEIGHT-420);
+            ctx.fillText(num.substr(0,1), (offset*i)+50,GAME_HEIGHT-620);
+            ctx.fillText(num.substr(1,1), (offset*i)+50,GAME_HEIGHT-520);
+            ctx.fillText(num.substr(2,1), (offset*i)+50,GAME_HEIGHT-420);
             i++;
         });
         ctx.restore();
@@ -208,14 +252,17 @@ class Game {
                     console.log("Level loaded.");
                     var i = 0;
                     console.log(level_data_processed);
+                    let winningDoor = game.randomizedTargetClassroom();
+                    console.log(winningDoor);
                     level_data.floors.forEach(function (floor) {
                         console.log(floor);
                         level_data_processed[i] = new Array(2);
                         level_data_processed[i][0] = [];
                         level_data_processed[i][1] = [];
+                        var idx = 1;
+                        var offset = 1000;
                         floor.classes.forEach(function (classe) {
-                            //console.log(classe);
-                            level_data_processed[i][0].push(new Classe(classe.number, 0));
+                            level_data_processed[i][0].push(new Classe(classe.number, (classe.number == winningDoor ? 1 : 0), offset*idx++));
                         });
                         floor.obstacles.forEach(function (obstacle) {
                             //console.log(classe);
@@ -242,7 +289,15 @@ class Game {
                 return obst[i]
             }
         }
-        return null
+        return null;
+    }
+
+    randomizedTargetClassroom() {
+        let min = 1, max = 3;
+        let floor = Math.floor(Math.random()*(max-min+1)+min);
+        min = 1, max = 9;
+        let classroom = Math.floor(Math.random()*(max-min+1)+min);
+        return floor+"0"+classroom;
     }
 }
 
@@ -297,7 +352,8 @@ const keyboard = (() => {
         left: false,
         up: false,
         any: false,
-        drink: false
+        drink: false,
+        spacebar: false
     };
 
     function keyHandler(e) {
@@ -310,6 +366,8 @@ const keyboard = (() => {
             keyboard.left = state;
         } else if (e.keyCode == 38) {
             keyboard.up = state;
+        } else if (e.keyCode == 32) {
+            keyboard.spacebar = state;
             e.preventDefault();
         }
         if (state) {
@@ -333,6 +391,7 @@ class Classe {
     constructor(num, win = 0) {
         this.num = num;
         this.win = win;
+        this.location = location;
     }
 }
 
