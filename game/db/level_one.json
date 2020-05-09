@@ -3,7 +3,8 @@
     {
       "classes": [
         {
-          "number": 100
+          "number": 100,
+          "win": 1
         },
         {
           "number": 101
