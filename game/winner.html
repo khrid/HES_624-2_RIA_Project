@@ -6,28 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+    <script src="js/localstorage.js"></script>
+    <script>
+        // scores dans le localStorage
+        let dbLocalStorage = window.localStorage.getItem("runhessorun-db-hof");
+        let db;
+        if (dbLocalStorage == null) {
+            loadHofInLocalStorage("game");
+        } else {
+            db = JSON.parse(dbLocalStorage);
+        }
+
+        // récup du temps
+        let time = window.localStorage.getItem("runhessorun-score");
+        // si on a un score à ajouter
+        if (time != null) {
+
+            // moulinette pour transformer les minutes/secondes en secondes ce qui deviendra le score
+            let parts = time.split(':'),
+                minutes = +parts[0],
+                seconds = +parts[1],
+                score = (minutes * 60 + seconds);
+
+            // date du jour au format yyyy-mm-dd
+            var m = new Date();
+            var dateString =
+                m.getUTCFullYear() + "-" +
+                ("0" + (m.getUTCMonth() + 1)).slice(-2) + "-" +
+                ("0" + m.getUTCDate()).slice(-2);
+
+            // ajout des informations du joueur dans le fichier des scores
+            if (db != null) {
+                //console.log(dbLocalStorage);
+                let item = {
+                    player: "changeme",
+                    score: score,
+                    timestamp: dateString,
+                    from: "Switzerland"
+                };
+                db.push(item);
+            }
+
+            // écriture du fichier des scores
+            window.localStorage.setItem("runhessorun-db-hof", JSON.stringify(db));
+
+            // effacer les données de la parties actuelles (éviter de rajouter plusieurs fois le même score avec F5)
+            window.localStorage.removeItem("runhessorun-score");
+        } else {
+            console.log("No score to process");
+        }
+    </script>
 </head>
 <body>
-<div class="game_container">
-        
-        <div class="zone_winner">
-            <div class="top_zone_winner">
-                <div class="bloc_result">Winner</div>
-            </div>
-            <div class="bottom_zone_winner"></div>
-        </div>     
-        <div class="winner">
-            <img src="images/bitmoji/lou_win.png"/>
-        </div>
-        <div class="table">
-            <img src="images/table.png"/>
-        </div>  
 
-        <a href="menu_restart.html">
-            <div class="next_btn">Next</div> 
-        </a>
-          
+<div class="game_container">
+    <div class="zone_winner">
+        <div class="top_zone_winner">
+            <div class="bloc_result">Winner</div>
+        </div>
+        <div class="bottom_zone_winner"></div>
     </div>
+    <div class="winner">
+        <img src="images/bitmoji/lou_win.png"/>
+    </div>
+    <div class="table">
+        <img src="images/table.png"/>
+    </div>
+
+    <a href="menu_restart.html">
+        <div class="next_btn">Next</div>
+    </a>
+
+</div>
 
 </body>
 </html>

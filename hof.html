@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="ressources/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <script type="text/javascript" src="ressources/js/script.js"></script>
+    <script type="text/javascript" src="game/js/localstorage.js"></script>
 </head>
 <body>
 
-<header>
+<section class="header">
     <h1>HES-SO Vs - 624-2 - HTML/CSS/JavaScript</h1>
     <nav>
         <!-- Hamburger -->
@@ -41,7 +42,7 @@
             </li>
         </ul>
     </nav>
-</header>
+</section>
 
 
 <main>
@@ -75,37 +76,29 @@
 </body>
 
 <script>
-    // chargement du contenu de la base de données (fichier .json)
-    var db;
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            //console.log(this.responseText);
-            db = JSON.parse(this.responseText);
-            //console.log(db);
-            console.log("Base de données des scores chargée.");
-        } else if(this.status == 404) {
-            console.log("Base de données des scores introuvable.")
-        }
-    };
-    xhttp.open("GET", "game/db/hof.json", false); // FALSE POUR ATTENDRE LA RÉPONSE
-    xhttp.send();
+    // scores dans le localStorage
+    let dbLocalStorage = window.localStorage.getItem("runhessorun-db-hof");
+    let db;
+    if(dbLocalStorage == null) {
+        loadHofInLocalStorage("site");
+    } else {
+        db = JSON.parse(dbLocalStorage);
+    }
 
 
     if (db != null) {
         if (db.length > 0) {
-
             // tri des enregistrements
             db.sort(function (a, b) {
                 return parseInt(b.score) - parseInt(a.score);
             });
 
             // affichage
-            table = document.getElementById("hof");
-            console.log(table);
+            tableHof = document.getElementById("hof");
+            console.log(tableHof);
             for (var line in db) {
                 console.log(line);
-                row = table.insertRow(-1);
+                row = tableHof.insertRow(-1);
                 if(line <= 2) { // pour les 3 premiers (index à 0)
                     row.className = "hof-top-"+(+line+1); // "+line" pour forcer l'addition comme des chiffres
                     if(line == 0) row.insertCell(0).innerHTML = "🥇";
@@ -120,6 +113,8 @@
                 row.insertCell(3).innerHTML = db[line].from;
                 row.insertCell(4).innerHTML = db[line].timestamp;
             }
+        } else {
+            document.getElementById("hof").innerText = "Pas de scores à afficher";
         }
     }
 
