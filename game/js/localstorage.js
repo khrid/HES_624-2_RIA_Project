@@ -2,14 +2,12 @@ function setUser(username){
     window.localStorage.setItem('name', username); 
 }
 
-
 function getImagePath(){
     name= window.localStorage.getItem('name');
     imageWin = document.getElementById('imgwin');
-    imageWin.src = "images/bitmoji/"+name+"_win.png";
+    imageWin.setAttribute("src", "images/bitmoji/"+name+"_win.png");
+
 }
-
-
 
 console.log("localstorage.js included");
 
