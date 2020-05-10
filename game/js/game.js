@@ -223,7 +223,7 @@ class Game {
 
     drawObstacles() {
         level_data_processed[currentFloor-1][1].forEach(function (obstacle) {
-            game.drawImg(obstacle.img, obstacle.location, GAME_PLAY.ground-150, 300, 300);
+            game.drawImg(obstacle.img, obstacle.location, GAME_PLAY.ground-150, 200, 300);
         });
     }
 
@@ -296,7 +296,7 @@ class Game {
                 }
             };
 
-            xhttp.open("GET", "db/level_one.json", false);
+            xhttp.open("GET", "db/level_"+window.localStorage.getItem('level')+".json", false);
             xhttp.send();
         }
     }
