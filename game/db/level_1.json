@@ -1,5 +1,5 @@
 {
-  "time_of_level":120,
+  "time_of_level": 120,
   "floors": [
     {
       "classes": [
@@ -28,7 +28,8 @@
           "number": 107
         },
         {
-          "number": 108
+          "number": 108,
+          "win": 1
         },
         {
           "number": 109
@@ -36,26 +37,33 @@
       ],
       "obstacles": [
         {
-          "location": 1500,
+          "location": 1200,
           "type": "Chaise",
-          "img_file": "chair3.png"
-
+          "img_file": "chair3.png", 
+          "width": 173,
+          "height": 342
         },
         {
           "location": 4554,
           "type": "Escalier",
-          "img_file": "plant2.png"
-
+          "img_file": "plant2.png",
+          "width": 377,
+          "height": 423
         },
         {
           "location": 6980,
           "type": "Table",
-          "img_file": "plant2.png"
+          "img_file": "plant2.png",
+          "width": 377,
+          "height": 423
         },
         {
           "location": 9950,
           "type": "Table",
-          "img_file": "plant2.png"
+          "img_file": "plant2.png",
+          
+          "width": 377,
+          "height": 423
         }
       ]
     },
@@ -97,13 +105,11 @@
           "location": 1500,
           "type": "Chaise",
           "img_file": "chair3.png"
-
         },
         {
           "location": 4554,
           "type": "Escalier",
           "img_file": "plant2.png"
-
         },
         {
           "location": 6980,
@@ -155,13 +161,11 @@
           "location": 1500,
           "type": "Chaise",
           "img_file": "chair3.png"
-
         },
         {
           "location": 4554,
           "type": "Escalier",
           "img_file": "plant2.png"
-
         },
         {
           "location": 6980,
