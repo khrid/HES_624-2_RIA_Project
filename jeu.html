@@ -76,6 +76,7 @@
 </body>
 
 <script>
+    document.getElementById("localisation").value = "Unknown";
     if ("geolocation" in navigator) {
         // Do something with coordinates returned
         function processCoords(position) {
@@ -85,7 +86,7 @@
                     response = JSON.parse(this.responseText);
                     console.log(response.geonames[0].toponymName);
                     console.log(response.geonames[0].countryName);
-                    document.getElementById("localisation").value = response.geonames[0].toponymName + ", " + response.geonames[0].countryName;
+                    document.getElementById("localisation").value = /*response.geonames[0].toponymName + ", " + */response.geonames[0].countryName;
                 }
             };
             xhttp.open("GET", "https://secure.geonames.org/findNearbyPlaceNameJSON?lat=" + position.coords.latitude + "&lng=" + position.coords.longitude + "&username=runhessorun", true); // Requête HTTP
@@ -98,8 +99,7 @@
 
     console.log(document.cookie);
 
-    target = "runhessorun-currentplayer";
-    if (window.localStorage.getItem(target) != null) {
+    if (window.localStorage.getItem("runhessorun-pseudo") != null) {
         // si l'utilisateur a un cookie avec son pseudo, il peut jouer
         document.getElementById("game-login").style = "display: none;";
         document.getElementById("game").style = "display: block;";
@@ -113,13 +113,14 @@
         if(document.getElementById("pseudo").value === "") {
             alert("Le pseudo ne peut pas être vide.");
         } else {
-            window.localStorage.setItem(target, document.getElementById("pseudo").value);
+            window.localStorage.setItem("runhessorun-pseudo", document.getElementById("pseudo").value);
+            window.localStorage.setItem("runhessorun-country", document.getElementById("localisation").value);
             location.reload();
         }
     }
 
     function deleteCookie() {
-        window.localStorage.removeItem(target);
+        window.localStorage.removeItem("runhessorun-pseudo");
         location.reload();
     }
 

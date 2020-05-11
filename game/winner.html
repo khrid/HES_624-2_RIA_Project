@@ -18,7 +18,8 @@
         }
 
         // nom du joueur
-        let pseudo = window.localStorage.getItem("runhessorun-currentplayer");
+        let pseudo = window.localStorage.getItem("runhessorun-pseudo");
+        let country = window.localStorage.getItem("runhessorun-country");
         // récup du temps
         let time = window.localStorage.getItem("runhessorun-score");
         // si on a un score à ajouter
@@ -44,7 +45,7 @@
                     player: pseudo,
                     score: score,
                     timestamp: dateString,
-                    from: "Switzerland"
+                    from: country
                 };
                 db.push(item);
             }
