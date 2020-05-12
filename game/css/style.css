@@ -308,6 +308,16 @@ PART 5 : THE GAME
     top : 30px;
 }
 
+.leave_game{
+    position : fixed;
+    left : 30px;
+    top : 0px;
+}
+
+.leave_game img {
+    height: 60px;
+}
+
 
 /*
 PART 6 : WINNER
