@@ -10,8 +10,7 @@
 </head>
 <body>
 
-<section class="header">
-    <h1>HES-SO Vs - 624-2 - HTML/CSS/JavaScript</h1>
+<section>
     <nav>
         <!-- Hamburger -->
         <ul>
@@ -44,18 +43,11 @@
 </section>
 
 
-<main>
+<main style="margin-left: 0px;margin-right: 0px;">
     <!-- Début zone pour votre contenu -->
-    <section id="articles">
-        <article>
-            <header>
-                <h2>Run, HES-SO, run !</h2>
-                <p><i>Par Louise, Albain, David</i></p>
-            </header>
-        </article>
-        <article>
-            <div id="game" style="width: 720px; height: 480px; margin: auto">
-                <iframe src="game/welcome.html" width="1200px" height="530px"></iframe><br/>
+    <section>
+            <div id="game" style="width: 720px; height: 480px; ">
+                <iframe src="game/welcome.html" width="1240px" height="660px"></iframe><br/>
                 <input type="button" value="Oubliez moi !" onclick="deleteCookie()">
             </div>
             <div id="game-login" style="display: none">
@@ -76,14 +68,10 @@
                 <input type="button" value="Jouer !" onclick="play()">
 
             </div>
-        </article>
+       
     </section>
     <!-- >Fin zone pour votre contenu -->
 </main>
-
-<footer>
-    <img id="logo" src="ressources/images/logo.png">
-</footer>
 
 </body>
 

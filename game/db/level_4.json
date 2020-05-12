@@ -1,0 +1,179 @@
+{
+  "time_of_level":55,
+  "floors": [
+    {
+      "classes": [
+        {
+          "number": 100
+        },
+        {
+          "number": 101
+        },
+        {
+          "number": 102
+        },
+        {
+          "number": 103
+        },
+        {
+          "number": 104
+        },
+        {
+          "number": 105
+        },
+        {
+          "number": 106
+        },
+        {
+          "number": 107
+        },
+        {
+          "number": 108
+        },
+        {
+          "number": 109
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 1500,
+          "type": "Plant",
+          "img_file": "plant2.png"
+
+        },
+        {
+          "location": 4554,
+          "type": "Perso",
+          "img_file": "angele.png"
+
+        },
+        {
+          "location": 6980,
+          "type": "Meuble",
+          "img_file": "trash4.png"
+        },
+        {
+          "location": 9950,
+          "type": "Perso",
+          "img_file": "vic.png"
+        }
+      ]
+    },
+    {
+      "classes": [
+        {
+          "number": 200
+        },
+        {
+          "number": 201
+        },
+        {
+          "number": 202
+        },
+        {
+          "number": 203
+        },
+        {
+          "number": 204
+        },
+        {
+          "number": 205
+        },
+        {
+          "number": 206
+        },
+        {
+          "number": 207
+        },
+        {
+          "number": 208
+        },
+        {
+          "number": 209
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 1500,
+          "type": "Perso",
+          "img_file": "baptiste.png"
+
+        },
+        {
+          "location": 4554,
+          "type": "Meuble",
+          "img_file": "trash1.png"
+
+        },
+        {
+          "location": 6980,
+          "type": "Perso",
+          "img_file": "marine.png"
+        },
+        {
+          "location": 9950,
+          "type": "Plante",
+          "img_file": "plant3.png"
+        }
+      ]
+    },
+    {
+      "classes": [
+        {
+          "number": 300
+        },
+        {
+          "number": 301
+        },
+        {
+          "number": 302
+        },
+        {
+          "number": 303
+        },
+        {
+          "number": 304
+        },
+        {
+          "number": 305
+        },
+        {
+          "number": 306
+        },
+        {
+          "number": 307
+        },
+        {
+          "number": 308
+        },
+        {
+          "number": 309
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 1500,
+          "type": "Meuble",
+          "img_file": "trash2.png"
+
+        },
+        {
+          "location": 4554,
+          "type": "Meuble",
+          "img_file": "chair2.png"
+
+        },
+        {
+          "location": 6980,
+          "type": "Perso",
+          "img_file": "aline.png"
+        },
+        {
+          "location": 9950,
+          "type": "Meuble",
+          "img_file": "computer.png"
+        }
+      ]
+    }
+  ]
+}
