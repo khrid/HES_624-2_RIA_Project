@@ -10,8 +10,7 @@
 </head>
 <body>
 
-<header>
-    <h1>HES-SO Vs - 624-2 - HTML/CSS/JavaScript</h1>
+<section>
     <nav>
         <!-- Hamburger -->
         <ul>
@@ -41,21 +40,14 @@
             </li>
         </ul>
     </nav>
-</header>
+</section>
 
 
-<main>
+<main style="margin-left: 0px;margin-right: 0px;">
     <!-- Début zone pour votre contenu -->
-    <section id="articles">
-        <article>
-            <header>
-                <h2>Run, HES-SO, run !</h2>
-                <p><i>Par Louise, Albain, David</i></p>
-            </header>
-        </article>
-        <article>
-            <div id="game" style="width: 720px; height: 480px; margin: auto">
-                <iframe src="game/index.html" width="720px" height="480px"></iframe><br/>
+    <section>
+            <div id="game" style="width: 720px; height: 480px; ">
+                <iframe src="game/welcome.html" width="1240px" height="660px"></iframe><br/>
                 <input type="button" value="Oubliez moi !" onclick="deleteCookie()">
             </div>
             <div id="game-login" style="display: none">
@@ -76,18 +68,15 @@
                 <input type="button" value="Jouer !" onclick="play()">
 
             </div>
-        </article>
+       
     </section>
     <!-- >Fin zone pour votre contenu -->
 </main>
 
-<footer>
-    <img id="logo" src="ressources/images/logo.png">
-</footer>
-
 </body>
 
 <script>
+    document.getElementById("localisation").value = "Unknown";
     if ("geolocation" in navigator) {
         // Do something with coordinates returned
         function processCoords(position) {
@@ -97,7 +86,7 @@
                     response = JSON.parse(this.responseText);
                     console.log(response.geonames[0].toponymName);
                     console.log(response.geonames[0].countryName);
-                    document.getElementById("localisation").value = response.geonames[0].toponymName + ", " + response.geonames[0].countryName;
+                    document.getElementById("localisation").value = /*response.geonames[0].toponymName + ", " + */response.geonames[0].countryName;
                 }
             };
             xhttp.open("GET", "https://secure.geonames.org/findNearbyPlaceNameJSON?lat=" + position.coords.latitude + "&lng=" + position.coords.longitude + "&username=runhessorun", true); // Requête HTTP
@@ -110,8 +99,7 @@
 
     console.log(document.cookie);
 
-    cookieName = "runhessorun-currentplayer";
-    if (getCookieValue(cookieName) != '') {
+    if (window.localStorage.getItem("runhessorun-pseudo") != null) {
         // si l'utilisateur a un cookie avec son pseudo, il peut jouer
         document.getElementById("game-login").style = "display: none;";
         document.getElementById("game").style = "display: block;";
@@ -125,19 +113,15 @@
         if(document.getElementById("pseudo").value === "") {
             alert("Le pseudo ne peut pas être vide.");
         } else {
-            document.cookie = cookieName + "=" + document.getElementById("pseudo").value;
+            window.localStorage.setItem("runhessorun-pseudo", document.getElementById("pseudo").value);
+            window.localStorage.setItem("runhessorun-country", document.getElementById("localisation").value);
             location.reload();
         }
     }
 
     function deleteCookie() {
-        document.cookie = cookieName+"= ; expires = -9";
+        window.localStorage.removeItem("runhessorun-pseudo");
         location.reload();
-    }
-
-    function getCookieValue(a) {
-        var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
-        return b ? b.pop() : '';
     }
 
 </script>

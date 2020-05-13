@@ -1,0 +1,233 @@
+{
+  "time_of_level": 30,
+  "floors": [
+    {
+      "classes": [
+        {
+          "number": 100
+        },
+        {
+          "number": 101
+        },
+        {
+          "number": 102
+        },
+        {
+          "number": 103
+        },
+        {
+          "number": 104
+        },
+        {
+          "number": 105
+        },
+        {
+          "number": 106
+        },
+        {
+          "number": 107
+        },
+        {
+          "number": 108,
+          "win": 1
+        },
+        {
+          "number": 109
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 0,
+          "type": "Mur",
+          "img_file": "mur.png", 
+          "width": 140,
+          "height": 1098
+        },
+        {
+          "location": 1200,
+          "type": "Perso",
+          "img_file": "aline.png", 
+          "width": 219,
+          "height": 317
+        },
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 3600,
+          "type": "Meuble",
+          "img_file": "trash1.png",
+          "width": 180,
+          "height": 314
+        },
+        {
+          "location": 4700,
+          "type": "Perso",
+          "img_file": "amandine.png",
+          "width": 180,
+          "height": 317
+        },
+        {
+          "location": 5800,
+          "type": "Perso",
+          "img_file": "trash4.png",
+          "width": 180,
+          "height": 325
+        },
+        {
+          "location": 7500,
+          "type": "Perso",
+          "img_file": "vic.png",
+          "width": 173,
+          "height": 334
+        },
+        {
+          "location": 8500,
+          "type": "Plante",
+          "img_file": "plant6.png",
+          "width": 207,
+          "height": 391
+        }
+      ]
+    },
+    {
+      "classes": [
+        {
+          "number": 200
+        },
+        {
+          "number": 201
+        },
+        {
+          "number": 202
+        },
+        {
+          "number": 203
+        },
+        {
+          "number": 204
+        },
+        {
+          "number": 205
+        },
+        {
+          "number": 206
+        },
+        {
+          "number": 207
+        },
+        {
+          "number": 208
+        },
+        {
+          "number": 209
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        }
+      ]
+    },
+    {
+      "classes": [
+        {
+          "number": 300
+        },
+        {
+          "number": 301
+        },
+        {
+          "number": 302
+        },
+        {
+          "number": 303
+        },
+        {
+          "number": 304
+        },
+        {
+          "number": 305
+        },
+        {
+          "number": 306
+        },
+        {
+          "number": 307
+        },
+        {
+          "number": 308
+        },
+        {
+          "number": 309
+        }
+      ],
+      "obstacles": [
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 11860,
+          "type": "Mur",
+          "img_file": "mur.png", 
+          "width": 140,
+          "height": 1098
+        }
+      ]
+    }
+  ]
+}

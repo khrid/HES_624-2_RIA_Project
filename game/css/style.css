@@ -17,6 +17,33 @@ html, body, .game_container, .welcome_zone, .menu_zone, .gameover_zone, .zone_wi
 }
 
 
+/* 
+    SHAKE si l'utilisateur fait une erreur
+*/
+.shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-10px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(20px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-40px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(40px, 0, 0);
+    }
+  }
 
 
 /*
@@ -56,20 +83,18 @@ PART 1 : WELCOME
     position: absolute;
     height: 20vh;
     width: 40vh;
-    margin-left: auto;
-    margin-right: auto;
     border: solid 5px #707070;
     border-radius: 10px;
     background: #AFAFAF;
     text-align: center;
-    bottom: 5px;
+    bottom: 2px;
     left: calc(50% - 20vh);
 }
 
 .play_btn {
     text-decoration: none;
     color: #F09478;
-    font-size: 70px;
+    font-size: 60px;
     line-height: 21vh;  
 }
 
@@ -114,6 +139,7 @@ PART 2 : PLAYER CHOICE
     clear: both;
     display: flex;
     justify-content: center;
+    padding-top: 70px;
 }
 
 .zone_head a {
@@ -122,7 +148,8 @@ PART 2 : PLAYER CHOICE
 
 .player_head {
     position: relative;
-    width: auto;
+    height: auto;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
     max-width: 70%;
@@ -142,8 +169,8 @@ PART 2 : PLAYER CHOICE
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 100px;
-    padding-bottom: 70px;   
+    padding-top: 45px;
+    padding-bottom: 10px;
 }
 
 
@@ -155,11 +182,10 @@ PART 3 : LEVEL CHOICE
 
 .level_box {
     position: relative;
-    height: 20vh;
-    width: 20vh;   
+    height:150px;
+    width: 150px;   
     
-    margin-right: auto;
-    margin-left: auto;
+    margin :auto;
     
     border: solid 5px #000000;
     border-radius: 30px;
@@ -170,7 +196,8 @@ PART 3 : LEVEL CHOICE
     text-decoration: none;
     color: #000000;
     font-size: 10vh;
-    line-height: 21vh;
+    line-height: 23vh;
+ 
 }
 
 .all_level{
@@ -182,16 +209,13 @@ PART 3 : LEVEL CHOICE
 }
 
 .dropzone{
-    position: relative;
+    position: fixed;
+    height: 160px;
+    width: 160px;
     margin-top: 15px;
     padding: 30px;
-    border: solid 5px #000000;
+    border: dashed   5px #000000;
     border-radius: 30px;
-    height: 150px;
-    width: 150px;
-    color: #000000;
-    font-size: 7vh;
-    line-height: 21vh;
 }
 
 .back_btn {
@@ -199,15 +223,22 @@ PART 3 : LEVEL CHOICE
     bottom: 50px;
     left:50px;    
 }
+.replay_btn {
+    display: none;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top:250px;
+}
 
 
 .continue_btn {
     display: none;
     position: absolute;
     height: 10vh;
-    width: 20vh;   
+    width: 30vh;   
     
-    border: solid 3px #000000;
+    border: solid 5px #000000;
     border-radius: 30px;
     background: #F09478;
 
@@ -228,15 +259,22 @@ PART 4 : RULES
 
 .rules_title{
     color: #000000;
-    font-size: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 70px;
+    font-size: 30px;
+    padding-top: 30px;
 }
 
+.rules_title span{
+    text-decoration: underline dotted;
+}
 
-.start_btn {
+.keyboard {
     position: relative;
+    width: 70%;
+    height: auto;
+    margin-top: 100px;
+}
+.start_btn {
+    position: absolute;
     height: 10vh;
     width: 40vh;   
     
@@ -244,12 +282,12 @@ PART 4 : RULES
     margin-left: 30px;
     margin-bottom: 30px;
     
-    border: solid 3px #000000;
+    border: solid 4px #000000;
     border-radius: 30px;
     background: #F09478;
 
-    bottom: 250px;
-    left: calc(50% - 20vh);
+    bottom: 10px;
+    left: calc(50% - 24vh);
     
     color: #000000;
     font-size: 32px;
@@ -272,57 +310,16 @@ PART 5 : THE GAME
     top : 30px;
 }
 
-.play_zone {
-    width: 10000px;
+.leave_game{
+    position : fixed;
+    left : 30px;
+    top : 0px;
 }
 
-.top_zone {
-    height: 70vh;
-    width: 100%;
-    background: #afafaf;
-    position: relative;
+.leave_game img {
+    height: 60px;
 }
 
-.bottom_zone {
-    height: 30vh;
-    width: 100%;
-    background: #e5d599;   
-}
-
-.personnage {
-    height: 30vh;
-    position: absolute;
-    bottom: 20vh;
-}
-
-.play_zone {
-    position: relative;
-}
-
-.all_doors {
-    position: absolute;
-    bottom: 0;
-    left: 500px;
-    display: flex;
-}
-
-
-.door {
-    position: relative;
-    height: 40vh;
-    width: 30vh;
-    margin-right: 1000px;
-    border: solid 5px #707070;
-    float: left;
-    background: #eee7c8;
-}
-
-.door span {
-    color: #707070;
-    font-weight: 900;
-    font-size: 22vh;
-    writing-mode: tb-rl;
-}
 
 /*
 PART 6 : WINNER
@@ -333,21 +330,21 @@ PART 6 : WINNER
 }
 
 .top_zone_winner {
-    height: 50vh;
+    height: 66%;
     width: 100%;
     background: #F6C97B;
 }
 
 .bottom_zone_winner {
-    height: 50vh;
+    height: 34%;
     width: 100%;
     background: #9EA4B9;   
 }
 
 .bloc_result {
-    height: 300px;
+    height: 250px;
     width: 450px;
-    margin : auto;
+    margin: auto;
     border: solid 5px #707070;
     background: #ffffff;
     color: #FF7565;
@@ -355,33 +352,32 @@ PART 6 : WINNER
     line-height: 21vh;
     text-align: center;
     bottom: 5px;
-    left: calc(50% - 300px);    
+    left: calc(50% - 300px);
 }
 
 .winner {
-    position : absolute;
-    left : 150px;
-    bottom : 200px;   
+    position: absolute;
+    left: 150px;
+    bottom: 100px;
 }
 
 
 
 .table {
-    position : absolute;
-    right : 150px;
-    bottom : 150px;
-
+    position: absolute;
+    right: 150px;
+    bottom: 100px;
 }
 
 .next_btn {
     position: absolute;
     height: 10vh;
     width: 20vh;   
-    border: solid 3px #000000;
+    border: solid 4px #000000;
     border-radius: 30px;
     background: #F09478;
-    bottom: 50px;
-    right: 50px;
+    bottom: 40px;
+    right: 40px;
     color: #000000;
     font-size: 22px;
     line-height: 11vh;
@@ -399,7 +395,7 @@ PART 7 : GAMEOVER
     background: #AFAFAF;
     font-size: 90px;
     text-align: center;
-    line-height: 8em;
+    line-height: 7.5em;
 }
 .gameover_zone a{
     text-decoration: none;
@@ -415,7 +411,7 @@ PART 8 : RESTART
 
 .zone_buttons {
     position: relative;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .zone_buttons a {
@@ -427,7 +423,7 @@ PART 8 : RESTART
     margin-right:  auto;
     margin-left: auto;
     margin-top: 50px; 
-    border: solid 3px #000000;
+    border: solid 4px #000000;
     border-radius: 30px;
     background: #F09478;
     color: #000000;
