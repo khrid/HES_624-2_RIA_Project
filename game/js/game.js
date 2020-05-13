@@ -7,7 +7,7 @@ var canvas = document.getElementById('canvas'),
 
 
 // CONSTANTS
-const DEPART_PLAYER = 0;
+const DEPART_PLAYER = 200;
 const GAME_HEIGHT = game_container.offsetHeight;
 const GAME_WIDTH = window.screen.width;
 const GAME_PLAY = {
@@ -29,7 +29,7 @@ console.log(document.getElementById("canvas").getAttribute("height"));
 
 
 class Player {
-    constructor(img, width, height, name, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 40) {
+    constructor(img, width, height, name, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 30) {
         this.img = img;
         this.x = x;
         this.y = y;

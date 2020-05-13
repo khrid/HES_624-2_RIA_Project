@@ -1,5 +1,5 @@
 {
-  "time_of_level":55,
+  "time_of_level":60,
   "floors": [
     {
       "classes": [
@@ -36,26 +36,60 @@
       ],
       "obstacles": [
         {
-          "location": 1500,
-          "type": "Plant",
-          "img_file": "plant2.png"
-
+          "location": 0,
+          "type": "Mur",
+          "img_file": "mur.png", 
+          "width": 140,
+          "height": 1098
         },
         {
-          "location": 4554,
-          "type": "Perso",
-          "img_file": "angele.png"
-
-        },
-        {
-          "location": 6980,
+          "location": 1200,
           "type": "Meuble",
-          "img_file": "trash4.png"
+          "img_file": "desk.png", 
+          "width": 375,
+          "height": 267
         },
         {
-          "location": 9950,
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant5.png",
+          "width": 147,
+          "height": 336
+        },
+        {
+          "location": 3600,
+          "type": "Meuble",
+          "img_file": "trash2.png",
+          "width": 180,
+          "height": 301
+        },
+        {
+          "location": 4700,
           "type": "Perso",
-          "img_file": "vic.png"
+          "img_file": "angele.png",
+          "width": 181,
+          "height": 320
+        },
+        {
+          "location": 5800,
+          "type": "Perso",
+          "img_file": "trash4.png",
+          "width": 180,
+          "height": 325
+        },
+        {
+          "location": 7500,
+          "type": "Perso",
+          "img_file": "vic.png",
+          "width": 173,
+          "height": 334
+        },
+        {
+          "location": 8500,
+          "type": "Plante",
+          "img_file": "plant6.png",
+          "width": 207,
+          "height": 391
         }
       ]
     },
@@ -94,26 +128,53 @@
       ],
       "obstacles": [
         {
-          "location": 1500,
+          "location": 1200,
           "type": "Perso",
-          "img_file": "baptiste.png"
-
+          "img_file": "elo.png", 
+          "width": 179,
+          "height": 328
         },
         {
-          "location": 4554,
-          "type": "Meuble",
-          "img_file": "trash1.png"
-
-        },
-        {
-          "location": 6980,
-          "type": "Perso",
-          "img_file": "marine.png"
-        },
-        {
-          "location": 9950,
+          "location": 2500,
           "type": "Plante",
-          "img_file": "plant3.png"
+          "img_file": "plant3.png",
+          "width": 319,
+          "height": 308
+        },
+        {
+          "location": 3600,
+          "type": "Meuble",
+          "img_file": "trash3.png",
+          "width": 180,
+          "height": 303
+        },
+        {
+          "location": 4700,
+          "type": "Perso",
+          "img_file": "marine.png", 
+          "width": 200,
+          "height": 297
+        },
+        {
+          "location": 5800,
+          "type": "Perso",
+          "img_file": "trash1.png",
+          "width": 180,
+          "height": 314
+        },
+        {
+          "location": 7500,
+          "type": "Meuble",
+          "img_file": "chair.png",
+          "width": 123,
+          "height": 208
+        },
+        {
+          "location": 8500,
+          "type": "Plante",
+          "img_file": "plant6.png",
+          "width": 207,
+          "height": 391
         }
       ]
     },
@@ -147,31 +208,66 @@
           "number": 308
         },
         {
-          "number": 309
+          "number": 309,
+          "win": 1
         }
       ],
       "obstacles": [
         {
-          "location": 1500,
-          "type": "Meuble",
-          "img_file": "trash2.png"
-
-        },
-        {
-          "location": 4554,
-          "type": "Meuble",
-          "img_file": "chair2.png"
-
-        },
-        {
-          "location": 6980,
+          "location": 1200,
           "type": "Perso",
-          "img_file": "aline.png"
+          "img_file": "aline.png", 
+          "width": 219,
+          "height": 317
         },
         {
-          "location": 9950,
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 3600,
           "type": "Meuble",
-          "img_file": "computer.png"
+          "img_file": "book.png",
+          "width": 101,
+          "height": 171
+        },
+        {
+          "location": 4700,
+          "type": "Perso",
+          "img_file": "amandine.png",
+          "width": 180,
+          "height": 317
+        },
+        {
+          "location": 5800,
+          "type": "Perso",
+          "img_file": "trash4.png",
+          "width": 180,
+          "height": 325
+        },
+        {
+          "location": 7500,
+          "type": "Perso",
+          "img_file": "zac.png",
+          "width": 231,
+          "height": 325
+        },
+        {
+          "location": 8500,
+          "type": "Plante",
+          "img_file": "plant3.png",
+          "width": 319,
+          "height": 308
+        },
+        {
+          "location": 11860,
+          "type": "Mur",
+          "img_file": "mur.png", 
+          "width": 140,
+          "height": 1098
         }
       ]
     }
