@@ -260,9 +260,11 @@ PART 4 : RULES
 .rules_title{
     color: #000000;
     font-size: 30px;
-    margin-left: auto;
-    margin-right: auto;
     padding-top: 30px;
+}
+
+.rules_title span{
+    text-decoration: underline dotted;
 }
 
 .keyboard {

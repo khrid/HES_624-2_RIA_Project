@@ -44,10 +44,10 @@
         },
         {
           "location": 1200,
-          "type": "Meuble",
-          "img_file": "desk.png", 
-          "width": 375,
-          "height": 267
+          "type": "Perso",
+          "img_file": "baptiste.png", 
+          "width": 209,
+          "height": 341
         },
         {
           "location": 2500,
@@ -166,8 +166,8 @@
           "location": 7500,
           "type": "Meuble",
           "img_file": "chair.png",
-          "width": 123,
-          "height": 208
+          "width": 200,
+          "height": 338
         },
         {
           "location": 8500,
@@ -263,7 +263,7 @@
           "height": 308
         },
         {
-          "location": 11860,
+          "location": 11100,
           "type": "Mur",
           "img_file": "mur.png", 
           "width": 140,
