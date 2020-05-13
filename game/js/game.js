@@ -28,7 +28,7 @@ console.log(document.getElementById("canvas").getAttribute("height"));
 
 
 class Player {
-    constructor(img, width, height, name, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 40) {
+    constructor(img, width, height, name, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 20) {
         this.img = img;
         this.x = x;
         this.y = y;
