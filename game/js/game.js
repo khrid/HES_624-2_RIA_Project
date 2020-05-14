@@ -38,7 +38,7 @@ porte.src = "images/porte.png";
     CLASSES DU JEU
 */
 class Player {
-    constructor(width, height, name, x = GAME_PLAY.depart_player, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -25, moveSpeed = 30) {
+    constructor(width, height, name, x = GAME_PLAY.depart_player, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -25, moveSpeed = 20) {
         this.img = new Image();
         this.x = x;
         this.y = y;
