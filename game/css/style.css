@@ -117,7 +117,29 @@ audio {
     position: absolute;
     top : 50px;
     right : 50px;
-  
+}
+
+.run_player_albain {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    bottom: 0px;
+    left:300px;
+}
+.run_player_lou {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    bottom: 0px;
+    right : 360px;  
+}
+
+.run_player_david {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    bottom: 0px;
+    left:200px;
 }
 
 
