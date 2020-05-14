@@ -86,11 +86,11 @@
           "height": 334
         },
         {
-          "location": 8500,
-          "type": "Plante",
-          "img_file": "plant6.png",
-          "width": 207,
-          "height": 391
+          "location": 11000,
+          "type": "Mur",
+          "img_file": "mur.png",
+          "width": 700,
+          "height": 1098
         }
       ]
     },
