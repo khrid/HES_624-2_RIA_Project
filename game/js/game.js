@@ -18,7 +18,9 @@ const GAME_PLAY = {
     world_size: 12000,
     depart_player: 200,
     currentFloor: 1,
-    offset_door: 1000
+    offset_door: 1000,
+    height_escalier: 555,
+    width_escalier: 515
 };
 
 
@@ -238,12 +240,12 @@ class Game {
     drawEscalier() {
         
         if (GAME_PLAY.currentFloor == 1) {
-            game.drawImg(escalier, GAME_PLAY.world_size-(width_escalier/2), GAME_PLAY.height - height_escalier, width_escalier, height_escalier);
+            game.drawImg(escalier, GAME_PLAY.world_size-(GAME_PLAY.width_escalier/2), GAME_PLAY.height - GAME_PLAY.height_escalier, GAME_PLAY.width_escalier, GAME_PLAY.height_escalier);
         } else if (GAME_PLAY.currentFloor == 2) {
-            game.drawImg(escalier, GAME_PLAY.world_size-(width_escalier/2), GAME_PLAY.height - height_escalier, width_escalier, height_escalier);
-            game.drawImg(escalier, 0, GAME_PLAY.height*0.6, width_escalier, height_escalier);
+            game.drawImg(escalier, GAME_PLAY.world_size-(GAME_PLAY.width_escalier/2), GAME_PLAY.height - GAME_PLAY.height_escalier, GAME_PLAY.width_escalier, GAME_PLAY.height_escalier);
+            game.drawImg(escalier, 0, GAME_PLAY.height*0.6, GAME_PLAY.width_escalier, GAME_PLAY.height_escalier);
         } else if (GAME_PLAY.currentFloor == 3) {
-            game.drawImg(escalier, 0, GAME_PLAY.height*0.6, width_escalier, height_escalier);
+            game.drawImg(escalier, 0, GAME_PLAY.height*0.6, GAME_PLAY.width_escalier, GAME_PLAY.height_escalier);
         }
     }
 
