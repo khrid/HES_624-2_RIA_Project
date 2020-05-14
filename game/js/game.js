@@ -7,29 +7,29 @@ var canvas = document.getElementById('canvas'),
 
 
 // CONSTANTS
-const DEPART_PLAYER = 200;
-const GAME_HEIGHT = game_container.offsetHeight;
-const GAME_WIDTH = window.screen.width;
 const GAME_PLAY = {
     gravity: 0.9, // strength per frame of gravity
     drag: 0.999, // play with this value to change drag
     groundDrag: 0.9, // play with this value to change ground movement
-    ground: GAME_HEIGHT*0.6+100,
+    ground: this.height*0.6+100,
+    width: game_container.offsetWidth,
+    height: game_container.offsetHeight,
+    depart_player: 200,
+    currentFloor: 1,
+    offset_door: 1000
 };
-var currentFloor = 1;
-var offset = 1000; // pas entre les portes
+
 
 ctx.canvas.width = 12000;
-ctx.canvas.height = GAME_HEIGHT;
+ctx.canvas.height = GAME_PLAY.height;
 //ctx.canvas.width = GAME_WIDTH;
-const image_player = new Image();
 
 console.log(document.getElementById("canvas").getAttribute("height"));
 
 
 class Player {
-    constructor(img, width, height, name, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 30) {
-        this.img = img;
+    constructor(width, height, name, x = GAME_PLAY.depart_player, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 30) {
+        this.img = new Image();
         this.x = x;
         this.y = y;
         this.dx = dx;
@@ -87,8 +87,8 @@ class Player {
 
         // Gestion des colisions
         var blockedByObstacle = false;
-        if (this.x - this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - this.width) {
-            var currObsta = game.checkIfColision(this.x, this.width, currentFloor);
+        if (this.x - this.width >= GAME_PLAY.depart_player && this.x < ctx.canvas.width - this.width) {
+            var currObsta = game.checkIfColision(this.x, this.width, GAME_PLAY.currentFloor);
             if(currObsta != null) {
                 console.log(currObsta)
                 if((this.y+this.height) <= (GAME_PLAY.ground-(currObsta.width/2))) {
@@ -114,28 +114,28 @@ class Player {
 
         // Changement d'étage
         if (this.x > ctx.canvas.width - this.width) {
-            if (currentFloor < 3) {
-                currentFloor++;
+            if (GAME_PLAY.currentFloor < 3) {
+                GAME_PLAY.currentFloor++;
                 console.log(this.x);
-                this.x = DEPART_PLAYER + 200;
+                this.x = GAME_PLAY.depart_player + 200;
                 console.log(this.x);
                 ctx.translate(ctx.canvas.width - 1550, 0);
             } else {
                 this.x = ctx.canvas.width - this.width;
             }
-        } else if (this.x <= DEPART_PLAYER) {
-            if (currentFloor > 1) {
-                currentFloor--;
+        } else if (this.x <= GAME_PLAY.depart_player) {
+            if (GAME_PLAY.currentFloor > 1) {
+                GAME_PLAY.currentFloor--;
                 this.x = ctx.canvas.width - this.width;
                 console.log(-ctx.canvas.width);
                 ctx.translate(-ctx.canvas.width + 1600, 0);
             } else {
-                this.x = DEPART_PLAYER;
+                this.x = GAME_PLAY.depart_player;
             }
         }
 
         // Test du contact avec les bordures du canvas
-        if (this.x - this.width >= DEPART_PLAYER && this.x < ctx.canvas.width - 1200) {
+        if (this.x - this.width >= GAME_PLAY.depart_player && this.x < ctx.canvas.width - 1200) {
             if(!blockedByObstacle) {
                 ctx.translate(-this.dx, 0);
             }
@@ -166,7 +166,7 @@ class Player {
         let width = this.width
         let winner = 0;
         // les portes
-        level_data_processed[currentFloor - 1][0].forEach(function (classe) {
+        level_data_processed[GAME_PLAY.currentFloor - 1][0].forEach(function (classe) {
             if (classe.win == 1) {
                 if (x >= classe.location-(width/2) && x <= classe.location + 175 + (width/2)) {
                     winner = 1;
@@ -183,10 +183,7 @@ class Player {
         }
         this.enterDoor = false;
     }
-    drawImageTest(ctx, frame) {
-        ctx.drawImage(frame.buffer, 0, 0)
-    }
-
+    
 
     vibrate() {
         game.minus5Timer();
@@ -226,18 +223,18 @@ class Game {
 
 
     drawEscalier() {
-        if (currentFloor == 1) {
-            game.drawImg(escalier, 12000, GAME_HEIGHT - 500, 500, 500);
-        } else if (currentFloor == 2) {
-            game.drawImg(escalier, 12300, GAME_HEIGHT - 500, 500, 500);
-            game.drawImg(escalier, 0, GAME_HEIGHT - 350, 500, 500);
-        } else if (currentFloor == 3) {
-            game.drawImg(escalier, 0, GAME_HEIGHT - 350, 500, 500);
+        if (GAME_PLAY.currentFloor == 1) {
+            game.drawImg(escalier, 12000, GAME_PLAY.height - 500, 500, 500);
+        } else if (GAME_PLAY.currentFloor == 2) {
+            game.drawImg(escalier, 12300, GAME_PLAY.height - 500, 500, 500);
+            game.drawImg(escalier, 0, GAME_PLAY.height - 350, 500, 500);
+        } else if (GAME_PLAY.currentFloor == 3) {
+            game.drawImg(escalier, 0, GAME_PLAY.height - 350, 500, 500);
         }
     }
 
     drawObstacles() {
-        level_data_processed[currentFloor-1][1].forEach(function (obstacle) {
+        level_data_processed[GAME_PLAY.currentFloor-1][1].forEach(function (obstacle) {
             game.drawImg(obstacle.img, obstacle.location, GAME_PLAY.ground-obstacle.height/2, obstacle.width, obstacle.height);
         });
     }
@@ -245,24 +242,24 @@ class Game {
     drawDoors() {
         ctx.save();
         var i = 1;
-        level_data_processed[currentFloor - 1][0].forEach(function (classe) {
-            game.drawImg(porte, classe.location, GAME_HEIGHT*0.6-300, 175, 300);
+        level_data_processed[GAME_PLAY.currentFloor - 1][0].forEach(function (classe) {
+            game.drawImg(porte, classe.location, GAME_PLAY.height*0.6-300, 175, 300);
             ctx.fillStyle = "#afafaf";
             ctx.font = '80px "BD Cartoon Shout"';
             var num = classe.num + "";
             ctx.textBaseline = 'middle';
             ctx.textAlign = "center";
-            ctx.fillText(num.substr(0, 1), (offset * i) + 50, GAME_HEIGHT*0.6-220);
-            ctx.fillText(num.substr(1, 1), (offset * i) + 50, GAME_HEIGHT*0.6-140);
-            ctx.fillText(num.substr(2, 1), (offset * i) + 50, GAME_HEIGHT*0.6-60);
+            ctx.fillText(num.substr(0, 1), (GAME_PLAY.offset_door * i) + 50, GAME_PLAY.height*0.6-220);
+            ctx.fillText(num.substr(1, 1), (GAME_PLAY.offset_door * i) + 50, GAME_PLAY.height*0.6-140);
+            ctx.fillText(num.substr(2, 1), (GAME_PLAY.offset_door * i) + 50, GAME_PLAY.height*0.6-60);
             i++;
         });
         ctx.restore();
     }
 
     drawGame() {
-        this.drawRect(0, 0, ctx.canvas.width + window.innerWidth, GAME_HEIGHT, "#afafaf");
-        this.drawRect(0, GAME_HEIGHT*0.6, ctx.canvas.width + window.innerWidth, 1000, "#e5d599");
+        this.drawRect(0, 0, ctx.canvas.width + window.innerWidth, GAME_PLAY.height, "#afafaf");
+        this.drawRect(0, GAME_PLAY.height*0.6, ctx.canvas.width + window.innerWidth, 1000, "#e5d599");
         //this.drawLevel();
         this.drawDoors();
         this.drawEscalier();
@@ -289,13 +286,12 @@ class Game {
                         level_data_processed[i][0] = [];
                         level_data_processed[i][1] = [];
                         var idx = 1;
-                        var offset = 1000;
                         floor.classes.forEach(function (classe) {
                             var win = 0;
                             if(classe.win) {
                                 win = 1
                             }
-                            level_data_processed[i][0].push(new Classe(classe.number, win, offset * idx++));
+                            level_data_processed[i][0].push(new Classe(classe.number, win, GAME_PLAY.offset_door * idx++));
                         });
                         floor.obstacles.forEach(function (obstacle) {
                             //console.log(classe);
@@ -316,8 +312,8 @@ class Game {
         }
     }
 
-    checkIfColision(x, width, currentFloor) {
-        var obst = level_data.floors[currentFloor-1].obstacles
+    checkIfColision(x, width) {
+        var obst = level_data.floors[GAME_PLAY.currentFloor-1].obstacles
         for (let i = 0; i < obst.length; i++) {
             if(x >= (obst[i].location-width) && x <= (obst[i].location + obst[i].width)){
                 return obst[i]
@@ -369,7 +365,7 @@ class Game {
 
 // Loop pour dessiner le jeu (boucle infinie)
 function mainLoop(time) {
-    ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    ctx.clearRect(0, 0, GAME_PLAY.width, GAME_PLAY.height);
     game.drawGame();
     player.update();
     player.draw();
@@ -439,7 +435,7 @@ window.onload = function () {
     game.startTimer(time_level, display);
 };
 
-const player = new Player(image_player, 200, 280, window.localStorage.getItem('name'));
+const player = new Player(200, 280, window.localStorage.getItem('name'));
 const game = new Game();
 game.processLevelDb();
 requestAnimationFrame(mainLoop);
