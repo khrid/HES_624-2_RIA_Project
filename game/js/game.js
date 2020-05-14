@@ -331,7 +331,7 @@ class Game {
         var seconds;
         setInterval(function () {
             if(self.wrongDoor == true) {
-                self.timer -= 5; 
+                self.timer -= Math.floor(Math.random()*(5-1+1)+1);;
             }
             if (self.timer < 10 && self.timer > 0) {
                 document.getElementById("time").style.color = "#ff0000";
@@ -342,7 +342,6 @@ class Game {
             self.wrongDoor = false;
             minutes = parseInt(self.timer / 60, 10);
             seconds = parseInt(self.timer % 60, 10);
-            console.log(self.timer / 60, self.timer % 60, minutes, seconds)
     
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
