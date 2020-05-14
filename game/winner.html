@@ -17,14 +17,17 @@
             db = JSON.parse(dbLocalStorage);
         }
 
-        // nom du joueur
-        let pseudo = window.localStorage.getItem("runhessorun-pseudo");
-        let country = window.localStorage.getItem("runhessorun-country");
+        // infos du joueur
+        let pseudo = window.localStorage.getItem("pseudo");
+        let country = window.localStorage.getItem("country");
         // récup du temps
-        let time = window.localStorage.getItem("runhessorun-score");
+        let time = window.localStorage.getItem("score");
+
         // si on a un score à ajouter
         if (time != null) {
 
+            let level = window.localStorage.getItem("level");
+            console.log(level);
             // moulinette pour transformer les minutes/secondes en secondes ce qui deviendra le score
             let parts = time.split(':'),
                 minutes = +parts[0],
@@ -43,10 +46,11 @@
                 //console.log(dbLocalStorage);
                 let item = {
                     player: pseudo,
-                    score: score,
+                    score: (score * level),
                     timestamp: dateString,
                     from: country
                 };
+                console.log(item);
                 db.push(item);
             }
 
@@ -54,10 +58,10 @@
             window.localStorage.setItem("runhessorun-db-hof", JSON.stringify(db));
 
             // Affichage dans le bloc WINNER
-            document.getElementsByClassName("bloc_result")[0].innerHTML = "WINNER<br/>Score "+score;
+            document.getElementsByClassName("bloc_result")[0].innerHTML = "WINNER<br/>Score "+item.score;
 
             // effacer les données de la parties actuelles (éviter de rajouter plusieurs fois le même score avec F5)
-            window.localStorage.removeItem("runhessorun-score");
+            window.localStorage.removeItem("score");
         } else {
             console.log("No score to process");
         }

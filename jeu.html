@@ -97,9 +97,7 @@
         navigator.geolocation.getCurrentPosition(processCoords);
     }
 
-    console.log(document.cookie);
-
-    if (window.localStorage.getItem("runhessorun-pseudo") != null) {
+    if (window.localStorage.getItem("pseudo") != null) {
         // si l'utilisateur a un cookie avec son pseudo, il peut jouer
         document.getElementById("game-login").style = "display: none;";
         document.getElementById("game").style = "display: block;";
@@ -113,14 +111,14 @@
         if(document.getElementById("pseudo").value === "") {
             alert("Le pseudo ne peut pas être vide.");
         } else {
-            window.localStorage.setItem("runhessorun-pseudo", document.getElementById("pseudo").value);
-            window.localStorage.setItem("runhessorun-country", document.getElementById("localisation").value);
+            window.localStorage.setItem("pseudo", document.getElementById("pseudo").value);
+            window.localStorage.setItem("country", document.getElementById("localisation").value);
             location.reload();
         }
     }
 
     function deleteCookie() {
-        window.localStorage.removeItem("runhessorun-pseudo");
+        window.localStorage.removeItem("pseudo");
         location.reload();
     }
 
