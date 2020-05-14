@@ -7,7 +7,7 @@ var canvas = document.getElementById('canvas'),
 
 
 // CONSTANTS
-const DEPART_PLAYER = 0;
+const DEPART_PLAYER = 200;
 const GAME_HEIGHT = game_container.offsetHeight;
 const GAME_WIDTH = window.screen.width;
 const GAME_PLAY = {
@@ -18,7 +18,6 @@ const GAME_PLAY = {
 };
 var currentFloor = 1;
 var offset = 1000; // pas entre les portes
-var spacebarPressed = 0;
 
 ctx.canvas.width = 12000;
 ctx.canvas.height = GAME_HEIGHT;
@@ -29,7 +28,7 @@ console.log(document.getElementById("canvas").getAttribute("height"));
 
 
 class Player {
-    constructor(img, width, height, name, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 40) {
+    constructor(img, width, height, name, x = DEPART_PLAYER, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -20, moveSpeed = 30) {
         this.img = img;
         this.x = x;
         this.y = y;
@@ -43,7 +42,8 @@ class Player {
         this.moveSpeed = moveSpeed;
         this.drink = false;
         this.ground = GAME_PLAY.ground;
-        this.name = name
+        this.name = name;
+        this.enterDoor = false;
     }
 
     update() {
@@ -64,31 +64,7 @@ class Player {
 
         // TODO sortir de là pour éviter d'avoir le check chaque fraction de seconde
         if (keyboard.spacebar) {
-            if (spacebarPressed == 0) {
-                spacebarPressed = 1;
-                console.log("spacebar pressed");
-
-                let x = this.x;
-                let width = this.width
-                let winner = 0;
-                // les portes
-                level_data_processed[currentFloor - 1][0].forEach(function (classe) {
-                    if (classe.win == 1) {
-                        if (x >= classe.location-(width/2) && x <= classe.location + 175 + (width/2)) {
-                            winner = 1;
-                        }
-                    }
-                });
-
-                if (winner) {
-                    // mise du temps restant dans un cookie
-                    window.localStorage.setItem('score', document.getElementById("time").innerText);
-                    window.location.href = "winner.html";
-                } else {
-                    this.vibrate();
-                }
-                spacebarPressed = 0;
-            }
+            this.enterDoor = true;
         }
 
         this.dy += GAME_PLAY.gravity;
@@ -167,6 +143,10 @@ class Player {
     }
 
     draw() {
+        if(keyboard.spacebar) {
+            this.checkEnterDoor()
+        }
+
         var direction = 'r';
         if(keyboard.left) {
             direction = 'l'
@@ -180,13 +160,36 @@ class Player {
         game.drawImg(this.img, this.x, this.y, this.width, this.height);
         this.onRun = false
     }
+    checkEnterDoor() {
+        console.log("spacebar pressed");
+        let x = this.x;
+        let width = this.width
+        let winner = 0;
+        // les portes
+        level_data_processed[currentFloor - 1][0].forEach(function (classe) {
+            if (classe.win == 1) {
+                if (x >= classe.location-(width/2) && x <= classe.location + 175 + (width/2)) {
+                    winner = 1;
+                }
+            }
+        });
 
+        if (winner) {
+            // mise du temps restant dans un cookie
+            window.localStorage.setItem('runhessorun-score', document.getElementById("time").innerText);
+            window.location.href = "winner.html";
+        } else {
+            this.vibrate();
+        }
+        this.enterDoor = false;
+    }
     drawImageTest(ctx, frame) {
         ctx.drawImage(frame.buffer, 0, 0)
     }
 
 
     vibrate() {
+        game.minus5Timer();
         canvas.className = 'shake'
         setTimeout(() => {
             canvas.className = ''
@@ -205,7 +208,10 @@ const porte = new Image();
 porte.src = "images/porte.png";
 
 class Game {
-
+    constructor() {
+        this.wrongDoor = false
+        this.timer = 0;
+    }
     drawImg(img, x, y, width, height) {
         ctx.drawImage(img, x, y, width, height);
     }
@@ -319,23 +325,35 @@ class Game {
         }
         return null;
     }
+    minus5Timer() {
+        this.wrongDoor = true;
+    }
     startTimer(duration, display) {
-        var timer = duration, minutes, seconds;
+        const self = this;
+        this.timer = duration;
+        var minutes;
+        var seconds;
         setInterval(function () {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
+            if(self.wrongDoor == true) {
+                self.timer -= 5; 
+            }
+            if (self.timer < 10 && self.timer > 0) {
+                document.getElementById("time").style.color = "#ff0000";
+            }
+            if (--self.timer < 0) {
+                window.location.href = "gameover.html";
+            }
+            self.wrongDoor = false;
+            minutes = parseInt(self.timer / 60, 10);
+            seconds = parseInt(self.timer % 60, 10);
+            console.log(self.timer / 60, self.timer % 60, minutes, seconds)
     
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
     
             display.textContent = minutes + ":" + seconds;
     
-            if (timer < 10 && timer > 0) {
-                document.getElementById("time").style.color = "#ff0000";
-            }
-            if (--timer < 0) {
-                window.location.href = "gameover.html";
-            }
+            
         }, 1000);
     }
 
@@ -380,10 +398,11 @@ const keyboard = (() => {
             keyboard.drink = state;
         } else if (e.keyCode == 37) {
             keyboard.left = state;
+        } else if (e.keyCode == 32) {
+            // player.checkEnterDoor()
+            keyboard.spacebar = state;
         } else if (e.keyCode == 38) {
             keyboard.up = state;
-        } else if (e.keyCode == 32) {
-            keyboard.spacebar = state;
             e.preventDefault();
         }
         if (state) {

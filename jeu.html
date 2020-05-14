@@ -45,31 +45,31 @@
 
 <main style="margin-left: 0px;margin-right: 0px;">
     <!-- Début zone pour votre contenu -->
-    <section>
-            <div id="game" style="width: 720px; height: 480px; ">
-                <iframe src="game/welcome.html" width="1240px" height="660px"></iframe><br/>
-                <input type="button" value="Oubliez moi !" onclick="deleteCookie()">
+    
+            <div id="game" style="width: 720px; height: 480px;">
+                <iframe src="game/welcome.html" width="1240px" height="660px" style="border: 1px solid #2f2f2f;"></iframe><br/>
+                <input type="button" value="Change username" onclick="deleteCookie()">
             </div>
-            <div id="game-login" style="display: none">
+            <div class="game_login" id="game-login" style="display: none">
                 <table>
                     <tr>
                         <td>
-                            <label for="pseudo">Nom d'utilisateur</label>
+                            <label for="pseudo">Username </label>
                         </td>
                         <td><input id="pseudo" type="text" placeholder="pseudo"/></td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="localisation">Localisation</label>
+                            <label for="localisation">Location </label>
                         </td>
-                        <td><input id="localisation" type="text" readonly placeholder="localisation"/></td>
+                        <td><input id="localisation" type="text" readonly placeholder="Location"/></td>
                     </tr>
                 </table><br/>
-                <input type="button" value="Jouer !" onclick="play()">
+                <input type="button" value="Play !" onclick="play()">
 
             </div>
        
-    </section>
+    
     <!-- >Fin zone pour votre contenu -->
 </main>
 
