@@ -92,14 +92,14 @@ footer img {
     margin-left: auto;
 }
 
-/* Tableau du Halle of fame */
-#hof{
+/* Tableau du Halle of fame et journal de bord */
+#hof, #jdb{
     margin: 0 auto;
     border-collapse: collapse;
     margin-bottom: 50px;
 }
 
-#hof th {
+#hof th, #jdb th {
     background-color: #2f2f2f;
     color: white;
     padding: 5px 0px 5px 0px;
@@ -134,6 +134,9 @@ footer img {
     font-size: 20px;
     font-weight: bolder;
     background-color: rgba(240, 148, 120, 0.25);
+}
+#jdb tr:nth-child(even) {
+    background-color: #EBEBEB;
 }
 
 /* Eléments solo */

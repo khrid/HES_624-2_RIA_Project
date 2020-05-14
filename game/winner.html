@@ -17,11 +17,12 @@
             db = JSON.parse(dbLocalStorage);
         }
 
-        // nom du joueur
-        let pseudo = window.localStorage.getItem("runhessorun-pseudo");
-        let country = window.localStorage.getItem("runhessorun-country");
-        // récup du temps
-        let time = window.localStorage.getItem("runhessorun-score");
+        // infos du joueur
+        let pseudo = window.localStorage.getItem("pseudo");
+        let country = window.localStorage.getItem("country");
+        // récup du temps et niveau
+        let time = window.localStorage.getItem("score");
+        let level = window.localStorage.getItem("level");
         // si on a un score à ajouter
         if (time != null) {
 
@@ -43,7 +44,7 @@
                 //console.log(dbLocalStorage);
                 let item = {
                     player: pseudo,
-                    score: score,
+                    score: score * level,
                     timestamp: dateString,
                     from: country
                 };
@@ -57,7 +58,7 @@
             document.getElementsByClassName("bloc_result")[0].innerHTML = "WINNER<br/>Score "+score;
 
             // effacer les données de la parties actuelles (éviter de rajouter plusieurs fois le même score avec F5)
-            window.localStorage.removeItem("runhessorun-score");
+            window.localStorage.removeItem("score");
         } else {
             console.log("No score to process");
         }

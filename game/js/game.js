@@ -82,7 +82,7 @@ class Player {
 
                 if (winner) {
                     // mise du temps restant dans un cookie
-                    window.localStorage.setItem('runhessorun-score', document.getElementById("time").innerText);
+                    window.localStorage.setItem('score', document.getElementById("time").innerText);
                     window.location.href = "winner.html";
                 } else {
                     this.vibrate();
