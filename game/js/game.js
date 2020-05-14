@@ -27,7 +27,14 @@ ctx.canvas.height = GAME_PLAY.height;
 
 console.log(document.getElementById("canvas").getAttribute("height"));
 
+const escalier = new Image(), porte = new Image();
+escalier.src = 'images/escalier.png'
+porte.src = "images/porte.png";
 
+
+/*
+    CLASSES DU JEU
+*/
 class Player {
     constructor(width, height, name, x = GAME_PLAY.depart_player, y = GAME_PLAY.ground, dx = 0, dy = 0, onGround = true, onRun = false, jumpPower = -25, moveSpeed = 30) {
         this.img = new Image();
@@ -190,14 +197,25 @@ class Player {
     }
     
 }
-const escalier = new Image();
-escalier.src = 'images/escalier.png'
 
-const table = new Image();
-table.src = "images/table.png";
+class Obstacle {
+    constructor(location, type, img_file, width, height) {
+        this.location = location;
+        this.type = type;
+        this.width = width;
+        this.height = height;
+        this.img = new Image();
+        this.img.src = "images/Obstacles/" + img_file; 
+    }
+}
 
-const porte = new Image();
-porte.src = "images/porte.png";
+class Classe {
+    constructor(num, win = 0, location) {
+        this.num = num;
+        this.win = win;
+        this.location = location;
+    }
+}
 
 class Game {
     constructor() {
@@ -352,17 +370,6 @@ class Game {
     // }
 }
 
-
-// Loop pour dessiner le jeu (boucle infinie)
-function mainLoop(time) {
-    ctx.clearRect(0, 0, GAME_PLAY.width, GAME_PLAY.height);
-    game.drawGame();
-    player.update();
-    player.draw();
-    game.drawObstacles();
-    requestAnimationFrame(mainLoop);
-}
-
 // Création des évènements du keyboard
 const keyboard = (() => {
     document.addEventListener("keydown", keyHandler);
@@ -400,23 +407,14 @@ const keyboard = (() => {
 })();
 
 
-class Obstacle {
-    constructor(location, type, img_file, width, height) {
-        this.location = location;
-        this.type = type;
-        this.width = width;
-        this.height = height;
-        this.img = new Image();
-        this.img.src = "images/Obstacles/" + img_file; 
-    }
-}
-
-class Classe {
-    constructor(num, win = 0, location) {
-        this.num = num;
-        this.win = win;
-        this.location = location;
-    }
+// Loop pour dessiner le jeu (boucle infinie)
+function mainLoop(time) {
+    ctx.clearRect(0, 0, GAME_PLAY.width, GAME_PLAY.height);
+    game.drawGame();
+    player.update();
+    player.draw();
+    game.drawObstacles();
+    requestAnimationFrame(mainLoop);
 }
 
 // Attendre que le DOM soit chargé
