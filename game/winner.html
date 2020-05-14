@@ -58,7 +58,7 @@
             window.localStorage.setItem("runhessorun-db-hof", JSON.stringify(db));
 
             // Affichage dans le bloc WINNER
-            document.getElementsByClassName("bloc_result")[0].innerHTML = "WINNER<br/>Score "+score;
+            document.getElementsByClassName("bloc_result")[0].innerHTML = "WINNER<br/>Score "+item.score;
 
             // effacer les données de la parties actuelles (éviter de rajouter plusieurs fois le même score avec F5)
             window.localStorage.removeItem("score");
