@@ -20,12 +20,14 @@
         // infos du joueur
         let pseudo = window.localStorage.getItem("pseudo");
         let country = window.localStorage.getItem("country");
-        // récup du temps et niveau
+        // récup du temps
         let time = window.localStorage.getItem("score");
-        let level = window.localStorage.getItem("level");
+
         // si on a un score à ajouter
         if (time != null) {
 
+            let level = window.localStorage.getItem("level");
+            console.log(level);
             // moulinette pour transformer les minutes/secondes en secondes ce qui deviendra le score
             let parts = time.split(':'),
                 minutes = +parts[0],
@@ -44,10 +46,11 @@
                 //console.log(dbLocalStorage);
                 let item = {
                     player: pseudo,
-                    score: score * level,
+                    score: (score * level),
                     timestamp: dateString,
                     from: country
                 };
+                console.log(item);
                 db.push(item);
             }
 
