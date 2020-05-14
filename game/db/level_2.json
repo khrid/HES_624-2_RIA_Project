@@ -1,5 +1,5 @@
 {
-  "time_of_level":35,
+  "time_of_level":20,
   "floors": [
     {
       "classes": [
@@ -214,32 +214,25 @@
           "height": 311
         },
         {
-          "location": 2500,
+          "location": 4500,
           "type": "Plante",
           "img_file": "plant4.png",
           "width": 152,
           "height": 311
         },
         {
-          "location": 2500,
+          "location": 5500,
           "type": "Plante",
           "img_file": "plant4.png",
           "width": 152,
           "height": 311
         },
         {
-          "location": 2500,
+          "location": 7000,
           "type": "Plante",
           "img_file": "plant4.png",
           "width": 152,
           "height": 311
-        },
-        {
-          "location": 11860,
-          "type": "Mur",
-          "img_file": "mur.png", 
-          "width": 140,
-          "height": 1098
         }
       ]
     }
