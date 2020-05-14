@@ -6,10 +6,8 @@ function getRoomWin(){
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-               
                 level_data = JSON.parse(this.responseText);
                 time_level = level_data.time_of_level;
-                //console.log(level_data);
                 level_data.floors.forEach(function (floor) {
                     floor.classes.forEach(function (classe) {
                         if(classe.win) {
@@ -21,12 +19,9 @@ function getRoomWin(){
                 console.log("Could not find level data.")
             }
         };
-    
         xhttp.open("GET", "db/level_"+window.localStorage.getItem('level')+".json", false);
         xhttp.send();
     }
-    
-
     return number;
 }
 
@@ -42,15 +37,12 @@ function getTimeLevel(){
             if (this.readyState == 4 && this.status == 200) {
                 level_data = JSON.parse(this.responseText);
                 time_level = level_data.time_of_level;
-                //console.log(level_data);
                 time = level_data.time_of_level;
                 console.log(time);
-    
             } else if (this.status == 404) {
                 console.log("Could not find level data.")
             }
         };
-    
         xhttp.open("GET", "db/level_"+window.localStorage.getItem('level')+".json", false);
         xhttp.send();
     }

@@ -26,9 +26,7 @@ function loadHofInLocalStorage(location) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            //console.log(this.responseText);
             db = JSON.parse(this.responseText);
-            //console.log(db);
             console.log("Base de données des scores chargée. Creating local storage copy");
             window.localStorage.setItem("runhessorun-db-hof", JSON.stringify(db));
 
