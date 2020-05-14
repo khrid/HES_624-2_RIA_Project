@@ -117,7 +117,29 @@ audio {
     position: absolute;
     top : 50px;
     right : 50px;
-  
+}
+
+.run_player_albain {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    bottom: 0px;
+    left:300px;
+}
+.run_player_lou {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    bottom: 0px;
+    right : 360px;  
+}
+
+.run_player_david {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    bottom: 0px;
+    left:200px;
 }
 
 
@@ -260,9 +282,11 @@ PART 4 : RULES
 .rules_title{
     color: #000000;
     font-size: 30px;
-    margin-left: auto;
-    margin-right: auto;
     padding-top: 30px;
+}
+
+.rules_title span{
+    text-decoration: underline dotted;
 }
 
 .keyboard {

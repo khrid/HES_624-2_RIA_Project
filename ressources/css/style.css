@@ -139,6 +139,25 @@ footer img {
     background-color: #EBEBEB;
 }
 
+/* Login zone */
+
+.game_login {
+    padding-top: 200px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 225px;
+    font-size: 20px;
+    text-align: center;
+   
+
+
+}
+
+
+
+
+
 /* Eléments solo */
 a {
     color: #E26633;

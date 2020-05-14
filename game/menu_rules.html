@@ -6,24 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+    <script src="js/menu_rules.js"></script>
 </head>
 <body>
 <div class="game_container">
-        
         <div class="menu_zone">
-            <div class="rules_title">Destination : Room ***</div>
-            <div class="rules_title">Time : **'</div>
-      
-            
-            <a href="index.html">
-                <div class="start_btn">Start</div>
-            </a>
+            <div class="rules_title">Destination : Room <span id="roomNumber"></span></div>
+            <div class="rules_title">Time : <span id="timeLevel"></span>''</div>
+            <a href="index.html"><div class="start_btn">Start</div></a>
+
             <img src="images/keyboard.png" class="keyboard" alt="" />
-            <a href="menu_level.html">
-                <img src="images/back.png" class="back_btn" alt="" />
-            </a>  
+            <a href="menu_level.html"><img src="images/back.png" class="back_btn" alt="" /></a>  
         </div>          
     </div>
 
 </body>
+<script>
+    var number = getRoomWin();
+    document.getElementById("roomNumber").innerHTML = number;
+    var time = getTimeLevel();
+    document.getElementById("timeLevel").innerHTML = time;
+</script>
 </html>

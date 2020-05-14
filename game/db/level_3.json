@@ -1,5 +1,5 @@
 {
-  "time_of_level":50,
+  "time_of_level":45,
   "floors": [
     {
       "classes": [
@@ -36,26 +36,60 @@
       ],
       "obstacles": [
         {
-          "location": 1500,
-          "type": "Plante",
-          "img_file": "zac.png"
-
+          "location": 0,
+          "type": "Mur",
+          "img_file": "mur.png", 
+          "width": 140,
+          "height": 1098
         },
         {
-          "location": 4554,
+          "location": 1200,
           "type": "Perso",
-          "img_file": "amandine.png"
-
+          "img_file": "zac.png", 
+          "width": 231,
+          "height": 325
         },
         {
-          "location": 6980,
-          "type": "Meuble",
-          "img_file": "desk.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
         },
         {
-          "location": 9950,
+          "location": 3600,
           "type": "Meuble",
-          "img_file": "trash3.png"
+          "img_file": "chair2.png",
+          "width": 180,
+          "height": 310
+        },
+        {
+          "location": 4700,
+          "type": "Perso",
+          "img_file": "baptiste.png",
+          "width": 209,
+          "height": 341
+        },
+        {
+          "location": 5800,
+          "type": "Meuble",
+          "img_file": "trash4.png",
+          "width": 180,
+          "height": 325
+        },
+        {
+          "location": 7500,
+          "type": "Perso",
+          "img_file": "aline.png",
+          "width": 219,
+          "height": 317
+        },
+        {
+          "location": 8500,
+          "type": "Plante",
+          "img_file": "plant6.png",
+          "width": 207,
+          "height": 391
         }
       ]
     },
@@ -94,26 +128,46 @@
       ],
       "obstacles": [
         {
-          "location": 1500,
-          "type": "Meuble",
-          "img_file": "trash4.png"
-
-        },
-        {
-          "location": 4554,
-          "type": "Perso",
-          "img_file": "vic.png"
-
-        },
-        {
-          "location": 6980,
-          "type": "Meuble",
-          "img_file": "computer.png"
-        },
-        {
-          "location": 9950,
+          "location": 2500,
           "type": "Plante",
-          "img_file": "plant5.png"
+          "img_file": "plant5.png",
+          "width": 147,
+          "height": 336
+        },
+        {
+          "location": 3600,
+          "type": "Meuble",
+          "img_file": "trash1.png",
+          "width": 180,
+          "height": 314
+        },
+        {
+          "location": 4700,
+          "type": "Perso",
+          "img_file": "amandine.png",
+          "width": 180,
+          "height": 317
+        },
+        {
+          "location": 5800,
+          "type": "Perso",
+          "img_file": "computer.png",
+          "width": 234,
+          "height": 198
+        },
+        {
+          "location": 7500,
+          "type": "Perso",
+          "img_file": "vic.png",
+          "width": 173,
+          "height": 334
+        },
+        {
+          "location": 8500,
+          "type": "Plante",
+          "img_file": "plant2.png",
+          "width": 377,
+          "height": 423
         }
       ]
     },
@@ -123,7 +177,8 @@
           "number": 300
         },
         {
-          "number": 301
+          "number": 301,
+          "win": 1
         },
         {
           "number": 302
@@ -154,24 +209,40 @@
         {
           "location": 1500,
           "type": "Perso",
-          "img_file": "angele.png"
+          "img_file": "angele.png",
+          "width": 181,
+          "height": 320
 
         },
         {
           "location": 4554,
           "type": "Meuble",
-          "img_file": "trash3.png"
+          "img_file": "trash3.png",
+          "width": 180,
+          "height": 303
 
         },
         {
           "location": 6980,
           "type": "Meuble",
-          "img_file": "chair2.png"
+          "img_file": "chair2.png",
+          "width": 282,
+          "height": 487
         },
         {
           "location": 9950,
           "type": "Plante",
-          "img_file": "plant2.png"
+          "img_file": "plant2.png",
+          "width": 377,
+          "height": 423
+        }
+        ,
+        {
+          "location": 11860,
+          "type": "Mur",
+          "img_file": "mur.png", 
+          "width": 140,
+          "height": 1098
         }
       ]
     }

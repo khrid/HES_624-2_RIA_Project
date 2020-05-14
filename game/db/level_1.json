@@ -1,5 +1,5 @@
 {
-  "time_of_level": 120,
+  "time_of_level": 30,
   "floors": [
     {
       "classes": [
@@ -37,33 +37,60 @@
       ],
       "obstacles": [
         {
+          "location": 0,
+          "type": "Mur",
+          "img_file": "mur.png", 
+          "width": 140,
+          "height": 1098
+        },
+        {
           "location": 1200,
-          "type": "Chaise",
-          "img_file": "chair3.png", 
+          "type": "Perso",
+          "img_file": "aline.png", 
+          "width": 219,
+          "height": 317
+        },
+        {
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 3600,
+          "type": "Meuble",
+          "img_file": "trash1.png",
+          "width": 180,
+          "height": 314
+        },
+        {
+          "location": 4700,
+          "type": "Perso",
+          "img_file": "amandine.png",
+          "width": 180,
+          "height": 317
+        },
+        {
+          "location": 5800,
+          "type": "Perso",
+          "img_file": "trash4.png",
+          "width": 180,
+          "height": 325
+        },
+        {
+          "location": 7500,
+          "type": "Perso",
+          "img_file": "vic.png",
           "width": 173,
-          "height": 342
+          "height": 334
         },
         {
-          "location": 4554,
-          "type": "Escalier",
-          "img_file": "plant2.png",
-          "width": 377,
-          "height": 423
-        },
-        {
-          "location": 6980,
-          "type": "Table",
-          "img_file": "plant2.png",
-          "width": 377,
-          "height": 423
-        },
-        {
-          "location": 9950,
-          "type": "Table",
-          "img_file": "plant2.png",
-          
-          "width": 377,
-          "height": 423
+          "location": 8500,
+          "type": "Plante",
+          "img_file": "plant6.png",
+          "width": 207,
+          "height": 391
         }
       ]
     },
@@ -102,24 +129,32 @@
       ],
       "obstacles": [
         {
-          "location": 1500,
-          "type": "Chaise",
-          "img_file": "chair3.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
         },
         {
-          "location": 4554,
-          "type": "Escalier",
-          "img_file": "plant2.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
         },
         {
-          "location": 6980,
-          "type": "Table",
-          "img_file": "plant2.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
         },
         {
-          "location": 9950,
-          "type": "Table",
-          "img_file": "plant2.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
         }
       ]
     },
@@ -158,24 +193,39 @@
       ],
       "obstacles": [
         {
-          "location": 1500,
-          "type": "Chaise",
-          "img_file": "chair3.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
         },
         {
-          "location": 4554,
-          "type": "Escalier",
-          "img_file": "plant2.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
         },
         {
-          "location": 6980,
-          "type": "Table",
-          "img_file": "plant2.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
         },
         {
-          "location": 9950,
-          "type": "Table",
-          "img_file": "plant2.png"
+          "location": 2500,
+          "type": "Plante",
+          "img_file": "plant4.png",
+          "width": 152,
+          "height": 311
+        },
+        {
+          "location": 11860,
+          "type": "Mur",
+          "img_file": "mur.png", 
+          "width": 140,
+          "height": 1098
         }
       ]
     }
